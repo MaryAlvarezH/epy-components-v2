@@ -13,6 +13,9 @@ export namespace Components {
   interface EpyButton {
     'epyclass': string;
   }
+  interface EpyCard {
+    'epyclass': string;
+  }
 }
 
 declare global {
@@ -23,8 +26,15 @@ declare global {
     prototype: HTMLEpyButtonElement;
     new (): HTMLEpyButtonElement;
   };
+
+  interface HTMLEpyCardElement extends Components.EpyCard, HTMLStencilElement {}
+  var HTMLEpyCardElement: {
+    prototype: HTMLEpyCardElement;
+    new (): HTMLEpyCardElement;
+  };
   interface HTMLElementTagNameMap {
     'epy-button': HTMLEpyButtonElement;
+    'epy-card': HTMLEpyCardElement;
   }
 }
 
@@ -33,9 +43,13 @@ declare namespace LocalJSX {
     'epyclass'?: string;
     'onClickButton'?: (event: CustomEvent<any>) => void;
   }
+  interface EpyCard {
+    'epyclass'?: string;
+  }
 
   interface IntrinsicElements {
     'epy-button': EpyButton;
+    'epy-card': EpyCard;
   }
 }
 
@@ -46,6 +60,7 @@ declare module "@stencil/core" {
   export namespace JSX {
     interface IntrinsicElements {
       'epy-button': LocalJSX.EpyButton & JSXBase.HTMLAttributes<HTMLEpyButtonElement>;
+      'epy-card': LocalJSX.EpyCard & JSXBase.HTMLAttributes<HTMLEpyCardElement>;
     }
   }
 }
