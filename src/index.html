@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0"
+    />
+    <title>Stencil Component Starter</title>
+    <link
+      rel="stylesheet"
+      href="https://storage.googleapis.com/assets-front/fonts/epy-icons.css"
+    />
+
+    <script type="module" src="/build/epy-components.esm.js"></script>
+    <script nomodule src="/build/epy-components.js"></script>
+    <link rel="stylesheet" href="node_modules/epy-scss/dist/css/epy.css" />
+  </head>
+  <body>
+    <my-component epyclass="btn btn-primary">
+      primary button<i class="epy-icon-edit right"></i>
+    </my-component>
+
+    <my-component epyclass="btn btn-primary disabled">
+      <i class="epy-icon-edit left"></i><span>primary button</span>
+    </my-component>
+  </body>
+</html>

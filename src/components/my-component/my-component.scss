@@ -1,0 +1,15 @@
+// :host {
+//   ::slotted(span), // for shadow
+//   &::slotted(span) {
+//     // for non-shadow
+//     color: red;
+//   }
+// }
+:host {
+  ::slotted(.left) {
+    margin-right: 8px;
+  }
+  ::slotted(.right) {
+    margin-left: 8px;
+  }
+}
