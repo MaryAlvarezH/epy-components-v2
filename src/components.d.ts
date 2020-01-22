@@ -10,7 +10,7 @@ import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 
 
 export namespace Components {
-  interface MyComponent {
+  interface EpyButton {
     'epyclass': string;
   }
 }
@@ -18,24 +18,24 @@ export namespace Components {
 declare global {
 
 
-  interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {}
-  var HTMLMyComponentElement: {
-    prototype: HTMLMyComponentElement;
-    new (): HTMLMyComponentElement;
+  interface HTMLEpyButtonElement extends Components.EpyButton, HTMLStencilElement {}
+  var HTMLEpyButtonElement: {
+    prototype: HTMLEpyButtonElement;
+    new (): HTMLEpyButtonElement;
   };
   interface HTMLElementTagNameMap {
-    'my-component': HTMLMyComponentElement;
+    'epy-button': HTMLEpyButtonElement;
   }
 }
 
 declare namespace LocalJSX {
-  interface MyComponent {
+  interface EpyButton {
     'epyclass'?: string;
     'onClickButton'?: (event: CustomEvent<any>) => void;
   }
 
   interface IntrinsicElements {
-    'my-component': MyComponent;
+    'epy-button': EpyButton;
   }
 }
 
@@ -45,7 +45,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
   export namespace JSX {
     interface IntrinsicElements {
-      'my-component': LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
+      'epy-button': LocalJSX.EpyButton & JSXBase.HTMLAttributes<HTMLEpyButtonElement>;
     }
   }
 }
