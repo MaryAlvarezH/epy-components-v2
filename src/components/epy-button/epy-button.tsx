@@ -7,6 +7,7 @@ import { Component, Prop, h, Event, EventEmitter } from "@stencil/core";
 })
 export class EpyComponent {
   @Prop() type: string;
+  @Prop() disabled: boolean;
   @Event() clickButton: EventEmitter;
 
   // Click with Event decorator
@@ -20,7 +21,9 @@ export class EpyComponent {
     return (
       <button
         class={"btn " + this.type}
-        disabled={this.type && this.type.includes("disabled")}
+        disabled={
+          (this.type && this.type.includes("disabled")) || this.disabled
+        }
         onClick={(event: UIEvent) => this.clickButtonHandler(event)}
       >
         <slot></slot>

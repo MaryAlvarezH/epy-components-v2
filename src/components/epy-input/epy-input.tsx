@@ -19,17 +19,20 @@ export class EpyInput {
   @Prop() placeholder: string;
   @Prop() value: any;
   @Prop() inputType: string;
-  @Prop() maxLength: string;
+  @Prop() maxlength: number;
+  @Prop() minlength: number;
+  @Prop() disabled: boolean;
   // minle
 
   // Aux props
   @Prop() validationStatus: string; // invalid or required
 
+  inputClass: string;
+
   hasContentLeftSlot: boolean;
   hasContentRightSlot: boolean;
 
   @Element() hostElement: HTMLStencilElement;
-  // @Element() contentRight: HTMLStencilElement;
 
   componentWillLoad() {
     this.hasContentLeftSlot = !!this.hostElement.querySelector(
@@ -41,17 +44,18 @@ export class EpyInput {
   }
 
   render() {
-    console.log("hasContentLeftSlot", this.hasContentLeftSlot);
-    console.log("hasContentRightSlot", this.hasContentRightSlot);
+    // this.loadInputClass();
     return (
-      <div class={this.type}>
+      <div class={"input " + this.type}>
         {this.label || this.labelHelper ? (
           <div class="title-container">
             {this.label ? (
               <label
                 class={{
-                  "input-label upper": this.type.includes("outline"),
-                  "input-label": !this.type.includes("outline")
+                  "input-label upper":
+                    this.type && this.type.includes("outline"),
+                  "input-label":
+                    (this.type && !this.type.includes("outline")) || !this.type
                 }}
               >
                 {this.label}
@@ -78,12 +82,21 @@ export class EpyInput {
           <slot name="content-left" />
           <input
             class={{
+              "input-text disabled":
+                this.type && this.type.includes("disabled"),
               "input-text invalid": this.validationStatus === "invalid",
-              "input-text": this.validationStatus !== "invalid"
+              "input-text":
+                !this.type ||
+                (this.type &&
+                  !this.type.includes("disabled") &&
+                  this.validationStatus !== "invalid")
             }}
             value={this.value}
             placeholder={this.placeholder}
             type={this.inputType}
+            maxlength={this.maxlength}
+            minlength={this.minlength}
+            disabled={this.disabled}
           />
           <slot name="content-right" />
         </div>

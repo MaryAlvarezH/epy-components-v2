@@ -13,25 +13,109 @@
     />
     <link
       rel="stylesheet"
-      href="https://storage.googleapis.com/assets-front/css/epy.css"
+      href="https://storage.googleapis.com/assets-front/css/epy-0-0-1.css"
     />
 
     <script type="module" src="/build/epy-components.esm.js"></script>
     <script nomodule src="/build/epy-components.js"></script>
   </head>
   <body>
-    <epy-button>
-      primary button
-      <i class="epy-icon-edit right"></i>
-    </epy-button>
+    <h4>epy-button</h4>
+    <div class="epy-row">
+      <h5>Types</h5>
+      <div class="col-2">
+        <epy-button type="btn-primary">primary</epy-button>
+      </div>
+      <div class="col-2">
+        <epy-button type="btn-primary btn-outline">outline</epy-button>
+      </div>
+      <div class="col-2">
+        <epy-button type="btn-destructive">destructive</epy-button>
+      </div>
+      <div class="col-2">
+        <epy-button type="btn-destructive btn-outline">
+          destructive outline
+        </epy-button>
+      </div>
+      <div class="col-2">
+        <epy-button type="btn-border-none">border none</epy-button>
+      </div>
+      <div class="col-2">
+        <epy-button type="btn-link">link</epy-button>
+      </div>
+      <div class="col-2">
+        <epy-button type="btn-default">default</epy-button>
+      </div>
+      <div class="col-2">
+        <epy-button>without class</epy-button>
+      </div>
+    </div>
 
-    <epy-button type="btn-primary">
-      primary button<i class="epy-icon-edit right"></i>
-    </epy-button>
+    <div class="epy-row">
+      <h5>Disabled by class</h5>
+      <div class="col-2">
+        <epy-button type="btn-primary disabled">disabled</epy-button>
+      </div>
+      <div class="col-2">
+        <epy-button type="btn-primary btn-outline disabled"
+          >disabled</epy-button
+        >
+      </div>
+      <div class="col-2">
+        <epy-button type="btn-destructive disabled">disabled</epy-button>
+      </div>
+      <div class="col-2">
+        <epy-button type="btn-destructive btn-outline disabled">
+          disabled
+        </epy-button>
+      </div>
+      <div class="col-2">
+        <epy-button type="btn-border-none disabled">disabled</epy-button>
+      </div>
+      <div class="col-2">
+        <epy-button type="btn-link disabled">disabled</epy-button>
+      </div>
+      <div class="col-2">
+        <epy-button type="btn-default disabled">disabled</epy-button>
+      </div>
 
-    <epy-button type="btn-primary disabled">
-      <i class="epy-icon-edit left"></i><span>primary button</span>
-    </epy-button>
+      <div class="col-2">
+        <epy-button type="disabled">without class</epy-button>
+      </div>
+    </div>
+
+    <div class="epy-row">
+      <h5>Disabled by props</h5>
+      <div class="col-2">
+        <epy-button type="btn-primary" disabled="true">disabled</epy-button>
+      </div>
+      <div class="col-2">
+        <epy-button type="btn-primary btn-outline" disabled="true"
+          >disabled</epy-button
+        >
+      </div>
+      <div class="col-2">
+        <epy-button type="btn-destructive" disabled="true">disabled</epy-button>
+      </div>
+      <div class="col-2">
+        <epy-button type="btn-destructive btn-outline" disabled="true">
+          disabled
+        </epy-button>
+      </div>
+      <div class="col-2">
+        <epy-button type="btn-border-none" disabled="true">disabled</epy-button>
+      </div>
+      <div class="col-2">
+        <epy-button type="btn-link" disabled="true">disabled</epy-button>
+      </div>
+      <div class="col-2">
+        <epy-button type="btn-default" disabled="true">disabled</epy-button>
+      </div>
+
+      <div class="col-2">
+        <epy-button disabled="true">without class</epy-button>
+      </div>
+    </div>
 
     <epy-card>
       <span>card</span>
@@ -48,7 +132,7 @@
     <div class="epy-row">
       <div class="col-2">
         <epy-input
-          type="input input-line validate"
+          type="input-line validate"
           placeholder="placeholder"
           label="Label"
           label-helper="this is label Helper"
@@ -57,7 +141,7 @@
 
       <div class="col-2">
         <epy-input
-          type="input input-line validate"
+          type="input-line validate"
           label="Label"
           value="value"
         ></epy-input>
@@ -65,7 +149,7 @@
 
       <div class="col-2">
         <epy-input
-          type="input input-line validate"
+          type="input-line validate"
           input-type="email"
           label="Email"
           placeholder="email"
@@ -74,7 +158,7 @@
 
       <div class="col-2">
         <epy-input
-          type="input input-line validate"
+          type="input-line validate"
           label="Email"
           input-type="email"
           value="123"
@@ -91,6 +175,40 @@
           <i slot="content-left" class="epy-icon-edit left"></i>
           <i slot="content-right" class="epy-icon-user right"></i>
         </epy-input>
+      </div>
+
+      <div class="col-2">
+        <epy-input
+          type="input-line validate"
+          label="Email"
+          minlength="5"
+          maxlength="10"
+          value="2"
+        >
+        </epy-input>
+      </div>
+
+      <div class="col-2">
+        <epy-input
+          type="input-line validate disabled"
+          label="Email"
+          placeholder="disabled by class"
+        >
+        </epy-input>
+      </div>
+
+      <div class="col-2">
+        <epy-input
+          type="input-line validate"
+          label="Email"
+          placeholder="disabled by props"
+          disabled="true"
+        >
+        </epy-input>
+      </div>
+
+      <div class="col-2">
+        <epy-input label="Email" placeholder="without type"> </epy-input>
       </div>
     </div>
 

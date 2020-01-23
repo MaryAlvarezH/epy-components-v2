@@ -11,6 +11,7 @@ import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 
 export namespace Components {
   interface EpyButton {
+    'disabled': boolean;
     'type': string;
   }
   interface EpyCard {
@@ -20,11 +21,13 @@ export namespace Components {
     'icon': string;
   }
   interface EpyInput {
+    'disabled': boolean;
     'errorLegend': String;
     'inputType': string;
     'label': string;
     'labelHelper': string;
-    'maxLength': string;
+    'maxlength': number;
+    'minlength': number;
     'placeholder': string;
     'requiredLegend': string;
     'type': string;
@@ -79,6 +82,7 @@ declare global {
 
 declare namespace LocalJSX {
   interface EpyButton {
+    'disabled'?: boolean;
     'onClickButton'?: (event: CustomEvent<any>) => void;
     'type'?: string;
   }
@@ -89,11 +93,13 @@ declare namespace LocalJSX {
     'icon'?: string;
   }
   interface EpyInput {
+    'disabled'?: boolean;
     'errorLegend'?: String;
     'inputType'?: string;
     'label'?: string;
     'labelHelper'?: string;
-    'maxLength'?: string;
+    'maxlength'?: number;
+    'minlength'?: number;
     'placeholder'?: string;
     'requiredLegend'?: string;
     'type'?: string;
