@@ -20,8 +20,8 @@ export namespace Components {
     'icon': string;
   }
   interface EpyInput {
-    'epyclass': string;
     'errorLegend': String;
+    'inputType': string;
     'label': string;
     'labelHelper': string;
     'maxLength': string;
@@ -89,8 +89,8 @@ declare namespace LocalJSX {
     'icon'?: string;
   }
   interface EpyInput {
-    'epyclass'?: string;
     'errorLegend'?: String;
+    'inputType'?: string;
     'label'?: string;
     'labelHelper'?: string;
     'maxLength'?: string;

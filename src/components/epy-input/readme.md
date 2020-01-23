@@ -9,8 +9,8 @@
 
 | Property           | Attribute           | Description | Type     | Default     |
 | ------------------ | ------------------- | ----------- | -------- | ----------- |
-| `epyclass`         | `epyclass`          |             | `string` | `undefined` |
 | `errorLegend`      | --                  |             | `String` | `undefined` |
+| `inputType`        | `input-type`        |             | `string` | `undefined` |
 | `label`            | `label`             |             | `string` | `undefined` |
 | `labelHelper`      | `label-helper`      |             | `string` | `undefined` |
 | `maxLength`        | `max-length`        |             | `string` | `undefined` |

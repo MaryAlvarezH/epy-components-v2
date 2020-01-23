@@ -7,7 +7,7 @@ import { HTMLStencilElement } from "@stencil/core/internal";
   shadow: false
 })
 export class EpyInput {
-  @Prop() epyclass: string;
+  @Prop() type: string;
 
   // Content props
   @Prop() label: string;
@@ -18,7 +18,7 @@ export class EpyInput {
   // Input props
   @Prop() placeholder: string;
   @Prop() value: any;
-  @Prop() type: string;
+  @Prop() inputType: string;
   @Prop() maxLength: string;
   // minle
 
@@ -44,14 +44,14 @@ export class EpyInput {
     console.log("hasContentLeftSlot", this.hasContentLeftSlot);
     console.log("hasContentRightSlot", this.hasContentRightSlot);
     return (
-      <div class={this.epyclass}>
+      <div class={this.type}>
         {this.label || this.labelHelper ? (
           <div class="title-container">
             {this.label ? (
               <label
                 class={{
-                  "input-label upper": this.epyclass.includes("outline"),
-                  "input-label": !this.epyclass.includes("outline")
+                  "input-label upper": this.type.includes("outline"),
+                  "input-label": !this.type.includes("outline")
                 }}
               >
                 {this.label}
@@ -83,7 +83,7 @@ export class EpyInput {
             }}
             value={this.value}
             placeholder={this.placeholder}
-            type={this.type}
+            type={this.inputType}
           />
           <slot name="content-right" />
         </div>
