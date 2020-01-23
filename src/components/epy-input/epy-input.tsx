@@ -32,6 +32,9 @@ export class EpyInput {
   hasContentLeftSlot: boolean;
   hasContentRightSlot: boolean;
 
+  hasUnitSlot: boolean;
+  hasSuffixSlot: boolean;
+
   @Element() hostElement: HTMLStencilElement;
 
   componentWillLoad() {
@@ -40,6 +43,12 @@ export class EpyInput {
     );
     this.hasContentRightSlot = !!this.hostElement.querySelector(
       '[slot="content-right"]'
+    );
+    this.hasUnitSlot = !!this.hostElement.querySelector(
+      '[slot="content-unit"]'
+    );
+    this.hasSuffixSlot = !!this.hostElement.querySelector(
+      '[slot="content-suffix"]'
     );
   }
 
@@ -76,10 +85,13 @@ export class EpyInput {
             "input-container content-right":
               !this.hasContentLeftSlot && this.hasContentRightSlot,
             "input-container content-asides":
-              this.hasContentLeftSlot && this.hasContentRightSlot
+              this.hasContentLeftSlot && this.hasContentRightSlot,
+            "input-container unit-suffix":
+              this.hasUnitSlot || this.hasSuffixSlot
           }}
         >
           <slot name="content-left" />
+          <slot name="content-unit" />
           <input
             class={{
               "input-text disabled":
@@ -99,6 +111,7 @@ export class EpyInput {
             disabled={this.disabled}
           />
           <slot name="content-right" />
+          <slot name="content-suffix" />
         </div>
       </div>
     );
