@@ -19,6 +19,9 @@ export namespace Components {
   interface EpyIcon {
     'icon': string;
   }
+  interface EpyLoader {
+    'epyclass': string;
+  }
 }
 
 declare global {
@@ -41,10 +44,17 @@ declare global {
     prototype: HTMLEpyIconElement;
     new (): HTMLEpyIconElement;
   };
+
+  interface HTMLEpyLoaderElement extends Components.EpyLoader, HTMLStencilElement {}
+  var HTMLEpyLoaderElement: {
+    prototype: HTMLEpyLoaderElement;
+    new (): HTMLEpyLoaderElement;
+  };
   interface HTMLElementTagNameMap {
     'epy-button': HTMLEpyButtonElement;
     'epy-card': HTMLEpyCardElement;
     'epy-icon': HTMLEpyIconElement;
+    'epy-loader': HTMLEpyLoaderElement;
   }
 }
 
@@ -59,11 +69,15 @@ declare namespace LocalJSX {
   interface EpyIcon {
     'icon'?: string;
   }
+  interface EpyLoader {
+    'epyclass'?: string;
+  }
 
   interface IntrinsicElements {
     'epy-button': EpyButton;
     'epy-card': EpyCard;
     'epy-icon': EpyIcon;
+    'epy-loader': EpyLoader;
   }
 }
 
@@ -76,6 +90,7 @@ declare module "@stencil/core" {
       'epy-button': LocalJSX.EpyButton & JSXBase.HTMLAttributes<HTMLEpyButtonElement>;
       'epy-card': LocalJSX.EpyCard & JSXBase.HTMLAttributes<HTMLEpyCardElement>;
       'epy-icon': LocalJSX.EpyIcon & JSXBase.HTMLAttributes<HTMLEpyIconElement>;
+      'epy-loader': LocalJSX.EpyLoader & JSXBase.HTMLAttributes<HTMLEpyLoaderElement>;
     }
   }
 }
