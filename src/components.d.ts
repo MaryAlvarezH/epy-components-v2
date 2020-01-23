@@ -11,10 +11,10 @@ import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 
 export namespace Components {
   interface EpyButton {
-    'epyclass': string;
+    'type': string;
   }
   interface EpyCard {
-    'epyclass': string;
+    'type': string;
   }
   interface EpyIcon {
     'icon': string;
@@ -79,11 +79,11 @@ declare global {
 
 declare namespace LocalJSX {
   interface EpyButton {
-    'epyclass'?: string;
     'onClickButton'?: (event: CustomEvent<any>) => void;
+    'type'?: string;
   }
   interface EpyCard {
-    'epyclass'?: string;
+    'type'?: string;
   }
   interface EpyIcon {
     'icon'?: string;

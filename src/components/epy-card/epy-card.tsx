@@ -6,12 +6,11 @@ import { Component, h, Prop } from "@stencil/core";
   shadow: false
 })
 export class EpyCard {
-  @Prop() epyclass: string;
+  @Prop() type: string;
 
   render() {
-    // console.log('render card')
     return (
-      <div class={this.epyclass}>
+      <div class={"card " + this.type}>
         <slot></slot>
       </div>
     );
