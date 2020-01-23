@@ -27,7 +27,7 @@ export class MyComponent {
   // }
 
   render() {
-    console.log('render button')
+    console.log('render button', this.epyclass)
 
     return (
       <button
