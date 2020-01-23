@@ -17,20 +17,8 @@ export class EpyComponent {
     }
   }
 
-  // CLick with Listen decorator
-  // @Listen("click", { capture: true })
-  // handleClick() {
-  //   if (!this.epyclass.includes("disabled")) {
-  //     console.log("listen click ");
-  //   }
-  // }
-
   render() {
-<<<<<<< HEAD
     console.log("render button");
-=======
-    console.log('render button', this.epyclass)
->>>>>>> a2430c683c730a0666711ba76b9737dbb0475721
 
     return (
       <button

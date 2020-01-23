@@ -20,7 +20,7 @@ export namespace Components {
     'icon': string;
   }
   interface EpyLoader {
-    'epyclass': string;
+    'type': string;
   }
 }
 
@@ -70,7 +70,7 @@ declare namespace LocalJSX {
     'icon'?: string;
   }
   interface EpyLoader {
-    'epyclass'?: string;
+    'type'?: string;
   }
 
   interface IntrinsicElements {
