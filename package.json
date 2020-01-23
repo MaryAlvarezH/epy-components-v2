@@ -28,7 +28,7 @@
   "license": "MIT",
   "dependencies": {
     "@stencil/sass": "^1.1.1",
-    "epy-scss": "^1.3.17"
+    "epy-scss": "^1.3.18"
   },
   "repository": {
     "type": "git",

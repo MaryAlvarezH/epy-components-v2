@@ -1,0 +1,25 @@
+:host {
+  display: block;
+
+  ::slotted(*) {
+    color: pink;
+    margin-right: 8px;
+  }
+  :slotted(content-right) {
+    margin-left: 8px;
+  }
+}
+
+::slotted(*) {
+  color: pink;
+  margin-right: 8px;
+}
+
+// :host {
+//   ::slotted(.left) {
+//     margin-right: 8px;
+//   }
+//   ::slotted(.right) {
+//     margin-left: 8px;
+//   }
+// }
