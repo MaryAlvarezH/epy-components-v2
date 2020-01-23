@@ -13,7 +13,7 @@
     />
     <link
       rel="stylesheet"
-      href="https://storage.googleapis.com/assets-front/css/epy.min.css"
+      href="https://storage.googleapis.com/assets-front/css/epy.css"
     />
 
     <script type="module" src="/build/epy-components.esm.js"></script>
@@ -37,5 +37,112 @@
     </epy-card>
 
     <!-- <epy-icon icon="icon-import-campaign" style="color:green"></epy-icon> -->
+
+    <div class="epy-row">
+      <div class="col-2">
+        <epy-input
+          epyclass="input input-line validate"
+          placeholder="placeholder"
+          label="Label"
+          label-helper="this is label Helper"
+        ></epy-input>
+      </div>
+
+      <div class="col-2">
+        <epy-input
+          epyclass="input input-line validate"
+          label="Label"
+          value="value"
+        ></epy-input>
+      </div>
+
+      <div class="col-2">
+        <epy-input
+          epyclass="input input-line validate"
+          type="email"
+          label="Email"
+          placeholder="email"
+        ></epy-input>
+      </div>
+
+      <div class="col-2">
+        <epy-input
+          epyclass="input input-line validate"
+          label="Email"
+          type="email"
+          value="123"
+          validation-status="invalid"
+        ></epy-input>
+      </div>
+
+      <div class="col-2">
+        <epy-input
+          epyclass="input input-line validate"
+          label="Email"
+          type="email"
+        >
+          <i slot="content-left" class="epy-icon-edit left"></i>
+          <i slot="content-right" class="epy-icon-user right"></i>
+        </epy-input>
+      </div>
+    </div>
+
+    <div class="epy-row">
+      <div class="col-2">
+        <epy-input
+          epyclass="input input-outline validate"
+          placeholder="placeholder"
+          label="Label"
+          label-helper="this is label Helper"
+        ></epy-input>
+      </div>
+
+      <div class="col-2">
+        <epy-input
+          epyclass="input input-outline validate"
+          label="Label"
+          value="value"
+        ></epy-input>
+      </div>
+
+      <div class="col-2">
+        <epy-input
+          epyclass="input input-outline validate"
+          type="email"
+          label="Email"
+          placeholder="email"
+        ></epy-input>
+      </div>
+
+      <div class="col-2">
+        <epy-input
+          epyclass="input input-outline validate"
+          label="Email"
+          type="email"
+          value="123"
+          validation-status="invalid"
+        ></epy-input>
+      </div>
+
+      <div class="col-2">
+        <epy-input
+          epyclass="input input-outline validate"
+          label="Email"
+          type="email"
+        >
+          <i slot="content-left" class="epy-icon-edit left"></i>
+          <i slot="content-right" class="epy-icon-user right"></i>
+        </epy-input>
+      </div>
+    </div>
+
+    <h4>Styles from CDN</h4>
+    <div class="input input-outline validate">
+      <div class="input-container content-asides">
+        <i class="epy-icon-user left"></i>
+        <input class="input-text invalid" type="email" placeholder="email" />
+        <i id="clean" class="epy-icon-x clean right"></i>
+      </div>
+    </div>
   </body>
 </html>

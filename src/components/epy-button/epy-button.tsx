@@ -26,12 +26,7 @@ export class EpyComponent {
   // }
 
   render() {
-<<<<<<< HEAD
-    console.log("render button");
-=======
-    console.log('render button', this.epyclass)
->>>>>>> a2430c683c730a0666711ba76b9737dbb0475721
-
+    // console.log("render button");
     return (
       <button
         class={this.epyclass}
