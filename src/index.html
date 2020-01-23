@@ -182,8 +182,8 @@
           type="input-line validate"
           label="Email"
           minlength="5"
-          maxlength="10"
-          value="2"
+          maxlength="5"
+          placeholder="maxlength 5"
         >
         </epy-input>
       </div>
@@ -227,7 +227,7 @@
     <div class="epy-row">
       <div class="col-2">
         <epy-input
-          type="input input-outline validate"
+          type="input-outline validate"
           placeholder="placeholder"
           label="Label"
           label-helper="this is label Helper"
@@ -236,7 +236,7 @@
 
       <div class="col-2">
         <epy-input
-          type="input input-outline validate"
+          type="input-outline validate"
           label="Label"
           value="value"
         ></epy-input>
@@ -244,7 +244,7 @@
 
       <div class="col-2">
         <epy-input
-          type="input input-outline validate"
+          type="input-outline validate"
           input-type="email"
           label="Email"
           placeholder="email"
@@ -253,7 +253,7 @@
 
       <div class="col-2">
         <epy-input
-          type="input input-outline validate"
+          type="input-outline validate"
           label="Email"
           input-type="email"
           value="123"
@@ -269,6 +269,48 @@
         >
           <i slot="content-left" class="epy-icon-edit left"></i>
           <i slot="content-right" class="epy-icon-user right"></i>
+        </epy-input>
+      </div>
+
+      <div class="col-2">
+        <epy-input
+          type="input-outline validate"
+          label="Email"
+          minlength="5"
+          maxlength="5"
+          placeholder="maxlength 5"
+        >
+        </epy-input>
+      </div>
+
+      <div class="col-2">
+        <epy-input
+          type="input-outline validate disabled"
+          label="Email"
+          placeholder="disabled by class"
+        >
+        </epy-input>
+      </div>
+
+      <div class="col-2">
+        <epy-input
+          type="input-outline validate"
+          label="Email"
+          placeholder="disabled by props"
+          disabled="true"
+        >
+        </epy-input>
+      </div>
+
+      <div class="col-2">
+        <epy-input
+          type="input-outline validate"
+          label="Budget"
+          placeholder="0"
+          input-type="number"
+        >
+          <span slot="content-unit" class="unit">$</span>
+          <span slot="content-suffix" class="suffix">MXN</span>
         </epy-input>
       </div>
     </div>
