@@ -34,6 +34,10 @@ export namespace Components {
   interface EpyLoader {
     'type': string;
   }
+  interface EpySelect {
+    'options': string[];
+    'placeholder': string;
+  }
 }
 
 declare global {
@@ -68,12 +72,19 @@ declare global {
     prototype: HTMLEpyLoaderElement;
     new (): HTMLEpyLoaderElement;
   };
+
+  interface HTMLEpySelectElement extends Components.EpySelect, HTMLStencilElement {}
+  var HTMLEpySelectElement: {
+    prototype: HTMLEpySelectElement;
+    new (): HTMLEpySelectElement;
+  };
   interface HTMLElementTagNameMap {
     'epy-button': HTMLEpyButtonElement;
     'epy-card': HTMLEpyCardElement;
     'epy-icon': HTMLEpyIconElement;
     'epy-input': HTMLEpyInputElement;
     'epy-loader': HTMLEpyLoaderElement;
+    'epy-select': HTMLEpySelectElement;
   }
 }
 
@@ -103,6 +114,11 @@ declare namespace LocalJSX {
   interface EpyLoader {
     'type'?: string;
   }
+  interface EpySelect {
+    'onSelectChange'?: (event: CustomEvent<any>) => void;
+    'options'?: string[];
+    'placeholder'?: string;
+  }
 
   interface IntrinsicElements {
     'epy-button': EpyButton;
@@ -110,6 +126,7 @@ declare namespace LocalJSX {
     'epy-icon': EpyIcon;
     'epy-input': EpyInput;
     'epy-loader': EpyLoader;
+    'epy-select': EpySelect;
   }
 }
 
@@ -124,6 +141,7 @@ declare module "@stencil/core" {
       'epy-icon': LocalJSX.EpyIcon & JSXBase.HTMLAttributes<HTMLEpyIconElement>;
       'epy-input': LocalJSX.EpyInput & JSXBase.HTMLAttributes<HTMLEpyInputElement>;
       'epy-loader': LocalJSX.EpyLoader & JSXBase.HTMLAttributes<HTMLEpyLoaderElement>;
+      'epy-select': LocalJSX.EpySelect & JSXBase.HTMLAttributes<HTMLEpySelectElement>;
     }
   }
 }
