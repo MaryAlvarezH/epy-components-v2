@@ -5,9 +5,8 @@ import { Component, Prop, h, Event, EventEmitter } from "@stencil/core";
   styleUrl: "epy-button.scss",
   shadow: false
 })
-export class MyComponent {
+export class EpyComponent {
   @Prop() epyclass: string;
-
   @Event() clickButton: EventEmitter;
 
   // Click with Event decorator
@@ -27,7 +26,7 @@ export class MyComponent {
   // }
 
   render() {
-    console.log('render button')
+    console.log("render button");
 
     return (
       <button
