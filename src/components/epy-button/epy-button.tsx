@@ -20,7 +20,7 @@ export class EpyComponent {
     return (
       <button
         class={"btn " + this.type}
-        disabled={this.type.includes("disabled")}
+        disabled={this.type && this.type.includes("disabled")}
         onClick={(event: UIEvent) => this.clickButtonHandler(event)}
       >
         <slot></slot>

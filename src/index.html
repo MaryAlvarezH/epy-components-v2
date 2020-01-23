@@ -20,36 +20,35 @@
     <script nomodule src="/build/epy-components.js"></script>
   </head>
   <body>
-
     <epy-button>
+      primary button
+      <i class="epy-icon-edit right"></i>
+    </epy-button>
+
+    <epy-button type="btn-primary">
       primary button<i class="epy-icon-edit right"></i>
     </epy-button>
 
-    <epy-button epyclass="btn btn-primary">
-      primary button<i class="epy-icon-edit right"></i>
-    </epy-button>
-
-    <epy-button epyclass="btn btn-primary disabled">
+    <epy-button type="btn-primary disabled">
       <i class="epy-icon-edit left"></i><span>primary button</span>
     </epy-button>
 
-    <epy-card epyclass="card">
+    <epy-card>
       <span>card</span>
     </epy-card>
 
-    <epy-card epyclass="card-panel">
+    <epy-card type="card-panel">
       <span>card panel</span>
     </epy-card>
 
-    <epy-loader type="budget-loader">
-    </epy-loader>
+    <epy-loader type="budget-loader"> </epy-loader>
 
     <!-- <epy-icon icon="icon-import-campaign" style="color:green"></epy-icon> -->
 
     <div class="epy-row">
       <div class="col-2">
         <epy-input
-          epyclass="input input-line validate"
+          type="input input-line validate"
           placeholder="placeholder"
           label="Label"
           label-helper="this is label Helper"
@@ -58,7 +57,7 @@
 
       <div class="col-2">
         <epy-input
-          epyclass="input input-line validate"
+          type="input input-line validate"
           label="Label"
           value="value"
         ></epy-input>
@@ -66,7 +65,7 @@
 
       <div class="col-2">
         <epy-input
-          epyclass="input input-line validate"
+          type="input input-line validate"
           type="email"
           label="Email"
           placeholder="email"
@@ -75,7 +74,7 @@
 
       <div class="col-2">
         <epy-input
-          epyclass="input input-line validate"
+          type="input input-line validate"
           label="Email"
           type="email"
           value="123"
@@ -84,11 +83,7 @@
       </div>
 
       <div class="col-2">
-        <epy-input
-          epyclass="input input-line validate"
-          label="Email"
-          type="email"
-        >
+        <epy-input type="input input-line validate" label="Email" type="email">
           <i slot="content-left" class="epy-icon-edit left"></i>
           <i slot="content-right" class="epy-icon-user right"></i>
         </epy-input>
@@ -98,7 +93,7 @@
     <div class="epy-row">
       <div class="col-2">
         <epy-input
-          epyclass="input input-outline validate"
+          type="input input-outline validate"
           placeholder="placeholder"
           label="Label"
           label-helper="this is label Helper"
@@ -107,7 +102,7 @@
 
       <div class="col-2">
         <epy-input
-          epyclass="input input-outline validate"
+          type="input input-outline validate"
           label="Label"
           value="value"
         ></epy-input>
@@ -115,7 +110,7 @@
 
       <div class="col-2">
         <epy-input
-          epyclass="input input-outline validate"
+          type="input input-outline validate"
           type="email"
           label="Email"
           placeholder="email"
@@ -124,7 +119,7 @@
 
       <div class="col-2">
         <epy-input
-          epyclass="input input-outline validate"
+          type="input input-outline validate"
           label="Email"
           type="email"
           value="123"
@@ -134,7 +129,7 @@
 
       <div class="col-2">
         <epy-input
-          epyclass="input input-outline validate"
+          type="input input-outline validate"
           label="Email"
           type="email"
         >
@@ -145,7 +140,7 @@
     </div>
 
     <h4>Styles from CDN</h4>
-    <div class="input input-outline validate">
+    <div class="input">
       <div class="input-container content-asides">
         <i class="epy-icon-user left"></i>
         <input class="input-text invalid" type="email" placeholder="email" />
