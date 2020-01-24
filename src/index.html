@@ -152,10 +152,18 @@
     <div class="epy-container">
       <div class="row">
         <div class="col-3">
-          <epy-select placeholder="Selecciona algo" options="['supi','dos']">
+          <!-- <epy-select placeholder="Selecciona algo">
             <option class="option">Option 1</option>
             <option class="option">Option 2</option>
+          </epy-select> -->
+        </div>
+        <div class="col-3">
+          <epy-select id="epy-select-js" placeholder="Selecciona algo" options="['supi','dos']">
           </epy-select>
+          <script>
+            let select = document.getElementById('epy-select-js');
+            select.options = ['supi','dos'];
+          </script>
         </div>
       </div>
       <div class="col-3">

@@ -37,6 +37,7 @@ export namespace Components {
   interface EpySelect {
     'options': string[];
     'placeholder': string;
+    'value': string;
   }
 }
 
@@ -118,6 +119,7 @@ declare namespace LocalJSX {
     'onSelectChange'?: (event: CustomEvent<any>) => void;
     'options'?: string[];
     'placeholder'?: string;
+    'value'?: string;
   }
 
   interface IntrinsicElements {

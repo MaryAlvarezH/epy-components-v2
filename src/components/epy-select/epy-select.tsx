@@ -9,10 +9,16 @@ export class EpySelect {
 
   @Prop() placeholder: string = 'placeholder';
   @Prop() options: string[];
+  @Prop({reflect: true}) value: string;
+
   @State() isOpen = false;
   @Event() selectChange: EventEmitter;
 
   select(option: string) {
+    console.log({option});
+    
+    this.value = option;
+    this.isOpen = false;
     this.selectChange.emit(option);
   }
 
@@ -28,7 +34,7 @@ export class EpySelect {
           <div class="select-trigger" onClick={() => this.setIsOpen()}>
             <div class="select-value">
               <slot name="selected">
-                <span>{this.placeholder}</span>
+                <span>{this.value ? this.value : this.placeholder}</span>
               </slot>
             </div>
             <div class="arrow arrow-open"></div>
