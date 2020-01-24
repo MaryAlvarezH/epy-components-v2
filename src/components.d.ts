@@ -21,15 +21,16 @@ export namespace Components {
     'icon': string;
   }
   interface EpyInput {
+    'clear': boolean;
     'disabled': boolean;
-    'errorLegend': String;
+    'errorLabel': string;
     'inputType': string;
     'label': string;
     'labelHelper': string;
     'maxlength': number;
     'minlength': number;
     'placeholder': string;
-    'requiredLegend': string;
+    'requiredLabel': string;
     'rows': number;
     'type': string;
     'validationStatus': string;
@@ -94,15 +95,17 @@ declare namespace LocalJSX {
     'icon'?: string;
   }
   interface EpyInput {
+    'clear'?: boolean;
     'disabled'?: boolean;
-    'errorLegend'?: String;
+    'errorLabel'?: string;
     'inputType'?: string;
     'label'?: string;
     'labelHelper'?: string;
     'maxlength'?: number;
     'minlength'?: number;
+    'onChanged'?: (event: CustomEvent<any>) => void;
     'placeholder'?: string;
-    'requiredLegend'?: string;
+    'requiredLabel'?: string;
     'rows'?: number;
     'type'?: string;
     'validationStatus'?: string;

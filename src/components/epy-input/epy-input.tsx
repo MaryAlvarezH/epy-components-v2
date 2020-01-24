@@ -1,4 +1,4 @@
-import { Component, h, Prop, Element } from "@stencil/core";
+import { Component, h, Prop, Element, Event, EventEmitter } from "@stencil/core";
 import { HTMLStencilElement } from "@stencil/core/internal";
 
 @Component({
@@ -12,17 +12,18 @@ export class EpyInput {
   // Content props
   @Prop() label: string;
   @Prop() labelHelper: string;
-  @Prop() errorLegend: String;
-  @Prop() requiredLegend: string;
+  @Prop() errorLabel: string;
+  @Prop() requiredLabel: string;
 
   // Input props
   @Prop() placeholder: string;
-  @Prop() value: any;
+  @Prop({ mutable: true }) value: any;
   @Prop() inputType: string;
   @Prop() maxlength: number;
   @Prop() minlength: number;
   @Prop() disabled: boolean;
   @Prop() rows: number;
+  @Prop() clear: boolean;
 
   // Aux props
   @Prop() validationStatus: string; // invalid or requireq
@@ -37,6 +38,12 @@ export class EpyInput {
   inputClass: string;
 
   @Element() hostElement: HTMLStencilElement;
+  @Event() changed: EventEmitter<any>;
+
+  handleChange(ev) {
+    this.value = ev.target ? ev.target.value : null;
+    this.changed.emit(this.value);
+  }
 
   setInputHeight(e) {
     console.log(e.target.scrollHeight);
@@ -57,6 +64,12 @@ export class EpyInput {
     }
   }
 
+  resetValue(ev) {
+    this.value = ev.target ? ev.target.value : null;
+    this.value = '';
+    this.changed.emit(this.value);
+  }
+
   componentWillLoad() {
     this.hasContentLeftSlot = !!this.hostElement.querySelector(
       '[slot="content-left"]'
@@ -73,6 +86,8 @@ export class EpyInput {
   }
 
   render() {
+    this.value = this.value ? this.value : '';
+
     return (
       <div class={"input " + this.type}>
         {this.label || this.labelHelper ? (
@@ -123,23 +138,35 @@ export class EpyInput {
               maxlength={this.maxlength}
               minlength={this.minlength}
               disabled={this.disabled}
+              onInput={(ev) => this.handleChange(ev)}
             />
           ) : (
-            <textarea
-              class={this.inputClass}
-              value={this.value}
-              placeholder={this.placeholder}
-              maxlength={this.maxlength}
-              minlength={this.minlength}
-              disabled={this.disabled}
-              onKeyUp={(event: UIEvent) => this.setInputHeight(event)}
-              onKeyDown={(event: UIEvent) => this.setInputHeight(event)}
-            />
-          )}
+              <textarea
+                class={this.inputClass}
+                value={this.value}
+                placeholder={this.placeholder}
+                maxlength={this.maxlength}
+                minlength={this.minlength}
+                disabled={this.disabled}
+                onKeyUp={(event: UIEvent) => this.setInputHeight(event)}
+                onKeyDown={(event: UIEvent) => this.setInputHeight(event)}
+                onInput={(ev) => this.handleChange(ev)}
+              />
+            )}
 
-          <slot name="content-right" />
+          {this.clear ? (<i slot="content-right" onClick={(ev) => this.handleChange(ev)} class="epy-icon-x clean right" ></i> ) : (<slot name="content-right" />) }
           <slot name="content-suffix" />
         </div>
+        <div class="input-aux-container">
+          {
+            this.errorLabel ? (<div class="helper-text"> {this.errorLabel} </div>) : null
+          }
+          {
+            this.maxlength ? (<div class="number"> {this.value.length} /  {this.maxlength}  </div>) : null
+          }
+        </div>
+
+
       </div>
     );
   }

@@ -274,6 +274,18 @@
 
       <div class="col-2">
         <epy-input
+          type="input input-outline validate"
+          label="Nombre"
+          input-type="text"
+          clear=true
+        >
+          <i slot="content-left" class="epy-icon-edit left"></i>
+          <i slot="content-right"></i>
+        </epy-input>
+      </div>
+
+      <div class="col-2">
+        <epy-input
           type="input-outline validate"
           label="Email"
           minlength="5"
@@ -322,6 +334,7 @@
           label="Textarea"
           placeholder="disabled by class"
           rows="3"
+          maxlength=10
         >
         </epy-input>
       </div>
