@@ -22,12 +22,10 @@ export class EpyInput {
   @Prop() maxlength: number;
   @Prop() minlength: number;
   @Prop() disabled: boolean;
-  // minle
+  @Prop() rows: number;
 
   // Aux props
-  @Prop() validationStatus: string; // invalid or required
-
-  inputClass: string;
+  @Prop() validationStatus: string; // invalid or requireq
 
   hasContentLeftSlot: boolean;
   hasContentRightSlot: boolean;
@@ -35,7 +33,29 @@ export class EpyInput {
   hasUnitSlot: boolean;
   hasSuffixSlot: boolean;
 
+  inputHeight: number;
+  inputClass: string;
+
   @Element() hostElement: HTMLStencilElement;
+
+  setInputHeight(e) {
+    console.log(e.target.scrollHeight);
+    let scrollSize = e.target.scrollHeight;
+
+    e.target.style.height = scrollSize + "px";
+  }
+
+  getInputClass() {
+    this.inputClass = "input-text";
+
+    if (this.type && this.type.includes("disabled")) {
+      this.inputClass = this.inputClass + " disabled";
+    }
+
+    if (this.type && this.type.includes("invalid")) {
+      this.validationStatus === "invalid";
+    }
+  }
 
   componentWillLoad() {
     this.hasContentLeftSlot = !!this.hostElement.querySelector(
@@ -53,7 +73,6 @@ export class EpyInput {
   }
 
   render() {
-    // this.loadInputClass();
     return (
       <div class={"input " + this.type}>
         {this.label || this.labelHelper ? (
@@ -76,6 +95,8 @@ export class EpyInput {
           </div>
         ) : null}
 
+        {this.getInputClass()}
+
         <div
           class={{
             "input-container":
@@ -92,24 +113,30 @@ export class EpyInput {
         >
           <slot name="content-left" />
           <slot name="content-unit" />
-          <input
-            class={{
-              "input-text disabled":
-                this.type && this.type.includes("disabled"),
-              "input-text invalid": this.validationStatus === "invalid",
-              "input-text":
-                !this.type ||
-                (this.type &&
-                  !this.type.includes("disabled") &&
-                  this.validationStatus !== "invalid")
-            }}
-            value={this.value}
-            placeholder={this.placeholder}
-            type={this.inputType}
-            maxlength={this.maxlength}
-            minlength={this.minlength}
-            disabled={this.disabled}
-          />
+
+          {!this.rows ? (
+            <input
+              class={this.inputClass}
+              value={this.value}
+              placeholder={this.placeholder}
+              type={this.inputType}
+              maxlength={this.maxlength}
+              minlength={this.minlength}
+              disabled={this.disabled}
+            />
+          ) : (
+            <textarea
+              class={this.inputClass}
+              value={this.value}
+              placeholder={this.placeholder}
+              maxlength={this.maxlength}
+              minlength={this.minlength}
+              disabled={this.disabled}
+              onKeyUp={(event: UIEvent) => this.setInputHeight(event)}
+              onKeyDown={(event: UIEvent) => this.setInputHeight(event)}
+            />
+          )}
+
           <slot name="content-right" />
           <slot name="content-suffix" />
         </div>

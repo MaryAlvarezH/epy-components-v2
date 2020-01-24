@@ -18,6 +18,7 @@
 | `minlength`        | `minlength`         |             | `number`  | `undefined` |
 | `placeholder`      | `placeholder`       |             | `string`  | `undefined` |
 | `requiredLegend`   | `required-legend`   |             | `string`  | `undefined` |
+| `rows`             | `rows`              |             | `number`  | `undefined` |
 | `type`             | `type`              |             | `string`  | `undefined` |
 | `validationStatus` | `validation-status` |             | `string`  | `undefined` |
 | `value`            | `value`             |             | `any`     | `undefined` |

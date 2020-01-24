@@ -30,6 +30,7 @@ export namespace Components {
     'minlength': number;
     'placeholder': string;
     'requiredLegend': string;
+    'rows': number;
     'type': string;
     'validationStatus': string;
     'value': any;
@@ -102,6 +103,7 @@ declare namespace LocalJSX {
     'minlength'?: number;
     'placeholder'?: string;
     'requiredLegend'?: string;
+    'rows'?: number;
     'type'?: string;
     'validationStatus'?: string;
     'value'?: any;
