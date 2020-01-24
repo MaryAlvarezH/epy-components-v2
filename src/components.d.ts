@@ -85,7 +85,7 @@ declare global {
 declare namespace LocalJSX {
   interface EpyButton {
     'disabled'?: boolean;
-    'onClickButton'?: (event: CustomEvent<any>) => void;
+    'onOnClick'?: (event: CustomEvent<any>) => void;
     'type'?: string;
   }
   interface EpyCard {
@@ -103,7 +103,7 @@ declare namespace LocalJSX {
     'labelHelper'?: string;
     'maxlength'?: number;
     'minlength'?: number;
-    'onChanged'?: (event: CustomEvent<any>) => void;
+    'onOnChange'?: (event: CustomEvent<any>) => void;
     'placeholder'?: string;
     'requiredLabel'?: string;
     'rows'?: number;

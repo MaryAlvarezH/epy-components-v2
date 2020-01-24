@@ -13,7 +13,7 @@
     />
     <link
       rel="stylesheet"
-      href="https://storage.googleapis.com/assets-front/css/epy-0-0-1.css"
+      href="https://storage.googleapis.com/assets-front/css/epy-0-0-1.min.css"
     />
 
     <script type="module" src="/build/epy-components.esm.js"></script>
@@ -136,6 +136,8 @@
           placeholder="placeholder"
           label="Label"
           label-helper="this is label Helper"
+          maxlength="10"
+          error-label="Invalid token"
         ></epy-input>
       </div>
 
@@ -277,7 +279,7 @@
           type="input input-outline validate"
           label="Nombre"
           input-type="text"
-          clear=true
+          clear="true"
         >
           <i slot="content-left" class="epy-icon-edit left"></i>
           <i slot="content-right"></i>
@@ -334,7 +336,8 @@
           label="Textarea"
           placeholder="disabled by class"
           rows="3"
-          maxlength=10
+          error-label="Invalid token"
+          max-len
         >
         </epy-input>
       </div>
@@ -342,11 +345,14 @@
     </div>
 
     <h4>Styles from CDN</h4>
-    <div class="input">
-      <div class="input-container content-asides">
-        <i class="epy-icon-user left"></i>
-        <input class="input-text invalid" type="email" placeholder="email" />
-        <i id="clean" class="epy-icon-x clean right"></i>
+    <div class="input input-line counter required validate">
+      <label class="input-label">Label</label>
+      <div class="input-container">
+        <input class="input-text" type="text" maxlength="10" />
+      </div>
+      <div class="input-aux-container">
+        <div class="helper-text">Error Message</div>
+        <div class="number">0/10</div>
       </div>
     </div>
   </body>

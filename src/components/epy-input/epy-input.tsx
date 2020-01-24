@@ -1,4 +1,11 @@
-import { Component, h, Prop, Element, Event, EventEmitter } from "@stencil/core";
+import {
+  Component,
+  h,
+  Prop,
+  Element,
+  Event,
+  EventEmitter
+} from "@stencil/core";
 import { HTMLStencilElement } from "@stencil/core/internal";
 
 @Component({
@@ -28,28 +35,44 @@ export class EpyInput {
   // Aux props
   @Prop() validationStatus: string; // invalid or requireq
 
-  hasContentLeftSlot: boolean;
-  hasContentRightSlot: boolean;
-
   hasUnitSlot: boolean;
   hasSuffixSlot: boolean;
 
   inputHeight: number;
   inputClass: string;
 
+  // Slots
   @Element() hostElement: HTMLStencilElement;
-  @Event() changed: EventEmitter<any>;
+
+  hasContentLeftSlot: boolean;
+  hasContentRightSlot: boolean;
+
+  // Events
+  @Event() onChange: EventEmitter<any>;
 
   handleChange(ev) {
-    this.value = ev.target ? ev.target.value : null;
-    this.changed.emit(this.value);
+    if (
+      (this.type && !this.type.includes("disabled")) ||
+      !this.disabled ||
+      !this.type
+    ) {
+      this.value = ev.target ? ev.target.value : null;
+      this.onChange.emit(this.value);
+    }
   }
 
-  setInputHeight(e) {
-    console.log(e.target.scrollHeight);
-    let scrollSize = e.target.scrollHeight;
+  setInputHeight(ev) {
+    if (ev.target.value) {
+      ev.target.style.height = ev.target.scrollHeight + "px";
+    } else {
+      ev.target.style.height = "104px";
+    }
+  }
 
-    e.target.style.height = scrollSize + "px";
+  resetValue(ev) {
+    this.value = ev.target ? ev.target.value : null;
+    this.value = "";
+    this.onChange.emit(this.value);
   }
 
   getInputClass() {
@@ -62,12 +85,6 @@ export class EpyInput {
     if (this.type && this.type.includes("invalid")) {
       this.validationStatus === "invalid";
     }
-  }
-
-  resetValue(ev) {
-    this.value = ev.target ? ev.target.value : null;
-    this.value = '';
-    this.changed.emit(this.value);
   }
 
   componentWillLoad() {
@@ -86,7 +103,7 @@ export class EpyInput {
   }
 
   render() {
-    this.value = this.value ? this.value : '';
+    this.value = this.value ? this.value : "";
 
     return (
       <div class={"input " + this.type}>
@@ -138,35 +155,44 @@ export class EpyInput {
               maxlength={this.maxlength}
               minlength={this.minlength}
               disabled={this.disabled}
-              onInput={(ev) => this.handleChange(ev)}
+              onInput={ev => this.handleChange(ev)}
             />
           ) : (
-              <textarea
-                class={this.inputClass}
-                value={this.value}
-                placeholder={this.placeholder}
-                maxlength={this.maxlength}
-                minlength={this.minlength}
-                disabled={this.disabled}
-                onKeyUp={(event: UIEvent) => this.setInputHeight(event)}
-                onKeyDown={(event: UIEvent) => this.setInputHeight(event)}
-                onInput={(ev) => this.handleChange(ev)}
-              />
-            )}
+            <textarea
+              class={this.inputClass}
+              value={this.value}
+              placeholder={this.placeholder}
+              maxlength={this.maxlength}
+              minlength={this.minlength}
+              disabled={this.disabled}
+              onKeyUp={(ev: UIEvent) => this.setInputHeight(ev)}
+              onKeyDown={(ev: UIEvent) => this.setInputHeight(ev)}
+              onInput={ev => this.handleChange(ev)}
+            />
+          )}
 
-          {this.clear ? (<i slot="content-right" onClick={(ev) => this.handleChange(ev)} class="epy-icon-x clean right" ></i> ) : (<slot name="content-right" />) }
+          {this.clear ? (
+            <i
+              slot="content-right"
+              onClick={ev => this.handleChange(ev)}
+              class="epy-icon-x clean right"
+            ></i>
+          ) : (
+            <slot name="content-right" />
+          )}
           <slot name="content-suffix" />
         </div>
         <div class="input-aux-container">
-          {
-            this.errorLabel ? (<div class="helper-text"> {this.errorLabel} </div>) : null
-          }
-          {
-            this.maxlength ? (<div class="number"> {this.value.length} /  {this.maxlength}  </div>) : null
-          }
+          {this.errorLabel ? (
+            <div class="helper-text"> {this.errorLabel} </div>
+          ) : null}
+          {this.maxlength ? (
+            <div class="number">
+              {" "}
+              {this.value.length} / {this.maxlength}{" "}
+            </div>
+          ) : null}
         </div>
-
-
       </div>
     );
   }
