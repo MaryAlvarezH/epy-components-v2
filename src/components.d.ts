@@ -13,6 +13,7 @@ import {
 
 export namespace Components {
   interface EpyButton {
+    'disabled': boolean;
     'type': string;
   }
   interface EpyCard {
@@ -22,13 +23,18 @@ export namespace Components {
     'icon': string;
   }
   interface EpyInput {
-    'epyclass': string;
-    'errorLegend': String;
+    'clear': boolean;
+    'disabled': boolean;
+    'errorLabel': string;
+    'inputType': string;
     'label': string;
     'labelHelper': string;
-    'maxLength': string;
+    'maxlength': number;
+    'minlength': number;
     'placeholder': string;
-    'requiredLegend': string;
+    'required': boolean;
+    'requiredLabel': string;
+    'rows': number;
     'type': string;
     'validationStatus': string;
     'value': any;
@@ -96,7 +102,8 @@ declare global {
 
 declare namespace LocalJSX {
   interface EpyButton {
-    'onClickButton'?: (event: CustomEvent<any>) => void;
+    'disabled'?: boolean;
+    'onEpyclick'?: (event: CustomEvent<any>) => void;
     'type'?: string;
   }
   interface EpyCard {
@@ -106,13 +113,19 @@ declare namespace LocalJSX {
     'icon'?: string;
   }
   interface EpyInput {
-    'epyclass'?: string;
-    'errorLegend'?: String;
+    'clear'?: boolean;
+    'disabled'?: boolean;
+    'errorLabel'?: string;
+    'inputType'?: string;
     'label'?: string;
     'labelHelper'?: string;
-    'maxLength'?: string;
+    'maxlength'?: number;
+    'minlength'?: number;
+    'onEpychange'?: (event: CustomEvent<any>) => void;
     'placeholder'?: string;
-    'requiredLegend'?: string;
+    'required'?: boolean;
+    'requiredLabel'?: string;
+    'rows'?: number;
     'type'?: string;
     'validationStatus'?: string;
     'value'?: any;
