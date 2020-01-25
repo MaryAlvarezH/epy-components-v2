@@ -158,11 +158,14 @@
           </epy-select> -->
         </div>
         <div class="col-3">
-          <epy-select id="epy-select-js" placeholder="Selecciona algo" options="['supi','dos']">
+          <epy-select id="epy-select-js" type="primary" label="Sabores" label-helper="(de helado)" placeholder="Selecciona sabor">
           </epy-select>
           <script>
             let select = document.getElementById('epy-select-js');
-            select.options = ['supi','dos'];
+            select.options = [{label:'chocolate',value:'CHO'},{label:'fresa',value:'FRE'},{label:'vainilla',value:'VAI'}];
+            select.addEventListener('selectChange',(ev)=>{
+              console.log('UN SELECT CAMBIO', ev);
+            })
           </script>
         </div>
       </div>

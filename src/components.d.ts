@@ -7,7 +7,9 @@
 
 
 import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
-
+import {
+  SelectItem,
+} from './components/epy-select/epy-select';
 
 export namespace Components {
   interface EpyButton {
@@ -35,9 +37,12 @@ export namespace Components {
     'type': string;
   }
   interface EpySelect {
-    'options': string[];
+    'label': string;
+    'labelHelper': string;
+    'options': Array<string|SelectItem>;
     'placeholder': string;
-    'value': string;
+    'type': string;
+    'value': any;
   }
 }
 
@@ -116,10 +121,13 @@ declare namespace LocalJSX {
     'type'?: string;
   }
   interface EpySelect {
+    'label'?: string;
+    'labelHelper'?: string;
     'onSelectChange'?: (event: CustomEvent<any>) => void;
-    'options'?: string[];
+    'options'?: Array<string|SelectItem>;
     'placeholder'?: string;
-    'value'?: string;
+    'type'?: string;
+    'value'?: any;
   }
 
   interface IntrinsicElements {
