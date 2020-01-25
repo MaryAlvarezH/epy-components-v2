@@ -30,6 +30,7 @@ export namespace Components {
     'maxlength': number;
     'minlength': number;
     'placeholder': string;
+    'required': boolean;
     'requiredLabel': string;
     'rows': number;
     'type': string;
@@ -85,7 +86,7 @@ declare global {
 declare namespace LocalJSX {
   interface EpyButton {
     'disabled'?: boolean;
-    'onOnClick'?: (event: CustomEvent<any>) => void;
+    'onEpyclick'?: (event: CustomEvent<any>) => void;
     'type'?: string;
   }
   interface EpyCard {
@@ -103,8 +104,9 @@ declare namespace LocalJSX {
     'labelHelper'?: string;
     'maxlength'?: number;
     'minlength'?: number;
-    'onOnChange'?: (event: CustomEvent<any>) => void;
+    'onEpychange'?: (event: CustomEvent<any>) => void;
     'placeholder'?: string;
+    'required'?: boolean;
     'requiredLabel'?: string;
     'rows'?: number;
     'type'?: string;

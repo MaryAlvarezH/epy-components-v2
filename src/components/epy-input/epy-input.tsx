@@ -31,6 +31,7 @@ export class EpyInput {
   @Prop() disabled: boolean;
   @Prop() rows: number;
   @Prop() clear: boolean;
+  @Prop() required: boolean;
 
   // Aux props
   @Prop() validationStatus: string; // invalid or requireq
@@ -48,7 +49,7 @@ export class EpyInput {
   hasContentRightSlot: boolean;
 
   // Events
-  @Event() onChange: EventEmitter<any>;
+  @Event() epychange: EventEmitter<any>;
 
   handleChange(ev) {
     if (
@@ -57,7 +58,7 @@ export class EpyInput {
       !this.type
     ) {
       this.value = ev.target ? ev.target.value : null;
-      this.onChange.emit(this.value);
+      this.epychange.emit(this.value);
     }
   }
 
@@ -72,7 +73,7 @@ export class EpyInput {
   resetValue(ev) {
     this.value = ev.target ? ev.target.value : null;
     this.value = "";
-    this.onChange.emit(this.value);
+    this.epychange.emit(this.value);
   }
 
   getInputClass() {
@@ -104,26 +105,16 @@ export class EpyInput {
 
   render() {
     this.value = this.value ? this.value : "";
-
+    if(this.errorLabel) { var error = true };
     return (
       <div class={"input " + this.type}>
         {this.label || this.labelHelper ? (
           <div class="title-container">
-            {this.label ? (
-              <label
-                class={{
-                  "input-label upper":
-                    this.type && this.type.includes("outline"),
-                  "input-label":
-                    (this.type && !this.type.includes("outline")) || !this.type
-                }}
-              >
-                {this.label}
-              </label>
+            {this.required ? (
+              <label class="text-red">*</label>
             ) : null}
-            {this.labelHelper ? (
-              <label class="input-helper">{this.labelHelper}</label>
-            ) : null}
+            {this.label ? ( <label class={{ "input-label upper": this.type && this.type.includes("outline"), "input-label": (this.type && !this.type.includes("outline")) || !this.type, "input-label text-red": (this.type && !this.type.includes("outline") && error) }}> {this.label} </label> ) : null}
+            {this.labelHelper ? ( <label class="input-helper">{this.labelHelper}</label> ) : null}
           </div>
         ) : null}
 
@@ -183,15 +174,8 @@ export class EpyInput {
           <slot name="content-suffix" />
         </div>
         <div class="input-aux-container">
-          {this.errorLabel ? (
-            <div class="helper-text"> {this.errorLabel} </div>
-          ) : null}
-          {this.maxlength ? (
-            <div class="number">
-              {" "}
-              {this.value.length} / {this.maxlength}{" "}
-            </div>
-          ) : null}
+          {this.errorLabel ? ( <div class="helper-text"> {this.errorLabel} </div> ) : null}
+          {this.maxlength ? ( <div class={"number " + (this.errorLabel ? 'text-red' : null) }> {" "} {this.value.length} / {this.maxlength} {" "} </div>) : null}
         </div>
       </div>
     );
