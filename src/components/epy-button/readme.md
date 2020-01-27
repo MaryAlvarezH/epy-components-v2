@@ -15,9 +15,9 @@
 
 ## Events
 
-| Event     | Description | Type               |
-| --------- | ----------- | ------------------ |
-| `onClick` |             | `CustomEvent<any>` |
+| Event      | Description | Type               |
+| ---------- | ----------- | ------------------ |
+| `epyclick` |             | `CustomEvent<any>` |
 
 
 ----------------------------------------------

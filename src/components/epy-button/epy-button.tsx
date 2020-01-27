@@ -8,12 +8,12 @@ import { Component, Prop, h, Event, EventEmitter } from "@stencil/core";
 export class EpyComponent {
   @Prop() type: string;
   @Prop() disabled: boolean;
-  @Event() onClick: EventEmitter;
+  @Event() epyclick: EventEmitter;
 
   // Click with Event decorator
   handleClick(ev) {
     if ((this.type && !this.type.includes("disabled")) || !this.type) {
-      this.onClick.emit(ev);
+      this.epyclick.emit(ev);
     }
   }
 

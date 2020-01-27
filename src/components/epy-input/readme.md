@@ -18,6 +18,7 @@
 | `maxlength`        | `maxlength`         |             | `number`  | `undefined` |
 | `minlength`        | `minlength`         |             | `number`  | `undefined` |
 | `placeholder`      | `placeholder`       |             | `string`  | `undefined` |
+| `required`         | `required`          |             | `boolean` | `undefined` |
 | `requiredLabel`    | `required-label`    |             | `string`  | `undefined` |
 | `rows`             | `rows`              |             | `number`  | `undefined` |
 | `type`             | `type`              |             | `string`  | `undefined` |
@@ -27,9 +28,9 @@
 
 ## Events
 
-| Event      | Description | Type               |
-| ---------- | ----------- | ------------------ |
-| `onChange` |             | `CustomEvent<any>` |
+| Event       | Description | Type               |
+| ----------- | ----------- | ------------------ |
+| `epychange` |             | `CustomEvent<any>` |
 
 
 ----------------------------------------------
