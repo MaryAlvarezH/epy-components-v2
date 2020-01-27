@@ -15,9 +15,13 @@ export class Popover {
 
   // Popperjs behaivor
   @Prop() placement;
+  @Prop() skidding: number;
+  @Prop() distance: number;
 
   // @reflect decorator helps to update the element reference in the DOM
   // https://github.com/RienNeVaPlus/stencil-reflector
+
+  // falta props with opcional
 
   @reflect private cardPanelState: boolean;
 
@@ -40,8 +44,12 @@ export class Popover {
       modifiers: [
         {
           name: "offset",
+
           options: {
-            offset: [0, 4]
+            offset: [
+              this.skidding ? this.skidding : 0,
+              this.distance ? this.distance : 4
+            ]
           }
         }
       ]
@@ -93,6 +101,7 @@ export class Popover {
             "popover-details hidden": !this.cardPanelState
           }}
         >
+          <div class="data-popper-arrow"></div>
           <slot></slot>
         </div>
       </div>

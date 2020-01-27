@@ -41,7 +41,9 @@ export namespace Components {
     'type': string;
   }
   interface EpyPopover {
+    'distance': number;
     'placement': any;
+    'skidding': number;
     'triggerEvent': string;
   }
 }
@@ -128,7 +130,9 @@ declare namespace LocalJSX {
     'type'?: string;
   }
   interface EpyPopover {
+    'distance'?: number;
     'placement'?: any;
+    'skidding'?: number;
     'triggerEvent'?: string;
   }
 
