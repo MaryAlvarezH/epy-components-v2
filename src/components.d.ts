@@ -17,6 +17,7 @@ export namespace Components {
   interface EpyCard {
     'type': string;
   }
+  interface EpyDroptip {}
   interface EpyIcon {
     'icon': string;
   }
@@ -45,6 +46,7 @@ export namespace Components {
     'placement': any;
     'skidding': number;
     'triggerEvent': string;
+    'width': string;
   }
 }
 
@@ -61,6 +63,12 @@ declare global {
   var HTMLEpyCardElement: {
     prototype: HTMLEpyCardElement;
     new (): HTMLEpyCardElement;
+  };
+
+  interface HTMLEpyDroptipElement extends Components.EpyDroptip, HTMLStencilElement {}
+  var HTMLEpyDroptipElement: {
+    prototype: HTMLEpyDroptipElement;
+    new (): HTMLEpyDroptipElement;
   };
 
   interface HTMLEpyIconElement extends Components.EpyIcon, HTMLStencilElement {}
@@ -89,6 +97,7 @@ declare global {
   interface HTMLElementTagNameMap {
     'epy-button': HTMLEpyButtonElement;
     'epy-card': HTMLEpyCardElement;
+    'epy-droptip': HTMLEpyDroptipElement;
     'epy-icon': HTMLEpyIconElement;
     'epy-input': HTMLEpyInputElement;
     'epy-loader': HTMLEpyLoaderElement;
@@ -105,6 +114,7 @@ declare namespace LocalJSX {
   interface EpyCard {
     'type'?: string;
   }
+  interface EpyDroptip {}
   interface EpyIcon {
     'icon'?: string;
   }
@@ -134,11 +144,13 @@ declare namespace LocalJSX {
     'placement'?: any;
     'skidding'?: number;
     'triggerEvent'?: string;
+    'width'?: string;
   }
 
   interface IntrinsicElements {
     'epy-button': EpyButton;
     'epy-card': EpyCard;
+    'epy-droptip': EpyDroptip;
     'epy-icon': EpyIcon;
     'epy-input': EpyInput;
     'epy-loader': EpyLoader;
@@ -154,6 +166,7 @@ declare module "@stencil/core" {
     interface IntrinsicElements {
       'epy-button': LocalJSX.EpyButton & JSXBase.HTMLAttributes<HTMLEpyButtonElement>;
       'epy-card': LocalJSX.EpyCard & JSXBase.HTMLAttributes<HTMLEpyCardElement>;
+      'epy-droptip': LocalJSX.EpyDroptip & JSXBase.HTMLAttributes<HTMLEpyDroptipElement>;
       'epy-icon': LocalJSX.EpyIcon & JSXBase.HTMLAttributes<HTMLEpyIconElement>;
       'epy-input': LocalJSX.EpyInput & JSXBase.HTMLAttributes<HTMLEpyInputElement>;
       'epy-loader': LocalJSX.EpyLoader & JSXBase.HTMLAttributes<HTMLEpyLoaderElement>;

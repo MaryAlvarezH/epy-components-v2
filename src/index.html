@@ -13,7 +13,7 @@
     />
     <link
       rel="stylesheet"
-      href="https://storage.googleapis.com/assets-front/css/epy-0-0-1.min.css"
+      href="https://storage.googleapis.com/assets-front/css/epy-0-0-2.min.css"
     />
 
     <script type="module" src="/build/epy-components.esm.js"></script>
@@ -441,12 +441,20 @@
           </epy-popover>
         </div>
 
+
+        <div class="col-2">
+            <span>Width property</span>
+            <epy-popover placement="right" width="600px">
+              The width is 100% by default, but it can set with width property<br>
+              &lt;epy-popover width="600px"&gt;
+            </epy-popper>
+          </div>
+
         <div class="col-2">
           <span>Skiding property</span>
           <epy-popover placement="right" skidding="30">
             The popper is offset 30px along the reference. <br>
             &lt;epy-popover placement="right" skidding="30"&gt;
-           
           </epy-popper>
         </div>
 
@@ -457,6 +465,27 @@
               &lt;epy-popover placement="right" skidding="30"&gt;
             </epy-popper>
           </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <h4>Droptip</h4>
+      <div class="col-4">
+        <epy-droptip>
+          <span slot="title">This is a droptip</span>
+          <div slot="content">
+            <div class="epy-row">
+              <div class="col-6">
+                This is a slot called "content"
+              </div>
+              <div class="col-6">
+                  You can custom it as you want
+                </div>
+            </div>
+
+          </div>
+        </epy-droptip>
+
       </div>
     </div>
 

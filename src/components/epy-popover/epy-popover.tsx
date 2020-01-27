@@ -1,6 +1,5 @@
-import { Component, Prop, Element, h } from "@stencil/core";
+import { Component, Prop, Element, h, State } from "@stencil/core";
 import { HTMLStencilElement } from "@stencil/core/internal";
-import { reflect } from "stencil-reflector";
 import { createPopper } from "@popperjs/core";
 
 @Component({
@@ -9,21 +8,17 @@ import { createPopper } from "@popperjs/core";
   shadow: false
 })
 export class Popover {
-  @Element() private el: HTMLStencilElement;
-
-  @Prop() triggerEvent: string; // click or hover (default -> hover)
+  // Component properties
+  @Prop() triggerEvent: string; // click or hover (default -> hover
+  @Prop() width: string;
 
   // Popperjs behaivor
   @Prop() placement;
   @Prop() skidding: number;
   @Prop() distance: number;
 
-  // @reflect decorator helps to update the element reference in the DOM
-  // https://github.com/RienNeVaPlus/stencil-reflector
-
-  // falta props with opcional
-
-  @reflect private cardPanelState: boolean;
+  @Element() private el: HTMLStencilElement;
+  @State() private cardPanelActive: boolean;
 
   private trigger: HTMLElement;
   private tooltip: HTMLElement;
@@ -35,7 +30,7 @@ export class Popover {
 
   componentDidLoad() {
     this.trigger = this.el.querySelector(".popover-trigger");
-    this.tooltip = this.el.querySelector(".popover-details");
+    this.tooltip = this.el.querySelector(".popover-content");
   }
 
   loadPopper() {
@@ -62,22 +57,25 @@ export class Popover {
       this.triggerEvent === "click" &&
       event == "click"
     ) {
-      this.cardPanelState = state;
+      this.cardPanelActive = state;
     } else if (
       ((this.triggerEvent && this.triggerEvent === "hover") ||
         !this.triggerEvent) &&
       event === "hover"
     ) {
-      this.cardPanelState = state;
+      this.cardPanelActive = state;
     }
   }
 
   render() {
     return (
       <div
-        class="popover-container"
+        class={{
+          "popover active": this.cardPanelActive,
+          "popover ": !this.cardPanelActive
+        }}
         tabindex="0"
-        onBlur={() => (this.cardPanelState = false)}
+        onBlur={() => (this.cardPanelActive = false)}
       >
         {this.loadPopper()}
 
@@ -85,7 +83,7 @@ export class Popover {
           class="popover-trigger"
           onMouseOver={() => this.setStateTrigger(true, "hover")}
           onMouseOut={() => this.setStateTrigger(false, "hover")}
-          onClick={() => this.setStateTrigger(!this.cardPanelState, "click")}
+          onClick={() => this.setStateTrigger(!this.cardPanelActive, "click")}
         >
           {!this.hasIconSlot ? (
             <i class="epy-icon-help"></i>
@@ -96,12 +94,11 @@ export class Popover {
 
         <div
           role="tooltip"
-          class={{
-            "popover-details": this.cardPanelState,
-            "popover-details hidden": !this.cardPanelState
+          class="popover-content"
+          style={{
+            width: this.width ? this.width : "100%"
           }}
         >
-          <div class="data-popper-arrow"></div>
           <slot></slot>
         </div>
       </div>
