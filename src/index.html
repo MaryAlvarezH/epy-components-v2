@@ -344,6 +344,91 @@
       <div class="col-3"></div>
     </div>
 
+    <h4>Popover</h4>
+    <div class="row">
+      <div class="epy-row">
+        <div class="col-2">
+          <span>
+            Default behaivor
+            <span class="text-small" style="display: block;">
+              Hover & Button position
+            </span>
+          </span>
+
+          <epy-popover>
+            button (default), button-start, button-end
+          </epy-popover>
+        </div>
+
+        <div class="col-2">
+          <span>
+            Placement
+            <span class="text-small" style="display: block;">
+              top
+            </span>
+          </span>
+          <epy-popover placement="top">
+            top, top-start, top-end
+          </epy-popover>
+        </div>
+
+        <div class="col-2">
+          <span>
+            Placement
+            <span class="text-small" style="display: block;">
+              right
+            </span>
+          </span>
+          <epy-popover placement="right-start">
+            right, right-start, right-end
+          </epy-popover>
+        </div>
+
+        <div class="col-2">
+          <span>
+            Placement
+            <span class="text-small" style="display: block;">
+              left
+            </span>
+          </span>
+          <epy-popover placement="left-start">
+            left, left-start, left-end
+          </epy-popover>
+        </div>
+
+        <div class="col-2">
+          <span>
+            Placement
+            <span class="text-small" style="display: block;">
+              auto
+            </span>
+          </span>
+          <epy-popover placement="auto">
+            auto, auto-start, auto-end
+          </epy-popover>
+        </div>
+
+        <div class="col-2">
+          <span>Custom trigger</span>
+          <epy-popover>
+            <span slot="trigger" class="text-green">This is a slot</span>
+            &lt;span slot="trigger"&gt; This is a slot &lt;/span&gt;
+          </epy-popover>
+        </div>
+      </div>
+      <div class="epy-row">
+        <div class="col-2">
+          <span>Event click</span>
+          <epy-popover trigger-event="click">
+            <span slot="trigger" class="text-green"
+              >Drop this<i class="epy-icon-caret-down"></i
+            ></span>
+            custom slot + event="click"
+          </epy-popover>
+        </div>
+      </div>
+    </div>
+
     <h4>Styles from CDN</h4>
     <div class="input input-line counter required validate">
       <label class="input-label">Label</label>
