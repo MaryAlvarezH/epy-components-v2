@@ -109,7 +109,8 @@ declare global {
   var HTMLEpyPopoverElement: {
     prototype: HTMLEpyPopoverElement;
     new (): HTMLEpyPopoverElement;
-  }
+  };
+
   interface HTMLEpySelectElement extends Components.EpySelect, HTMLStencilElement {}
   var HTMLEpySelectElement: {
     prototype: HTMLEpySelectElement;
