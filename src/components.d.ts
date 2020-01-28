@@ -7,7 +7,9 @@
 
 
 import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
-
+import {
+  SelectItem,
+} from './components/epy-select/epy-select';
 
 export namespace Components {
   interface EpyButton {
@@ -47,6 +49,20 @@ export namespace Components {
     'skidding': number;
     'triggerEvent': string;
     'width': string;
+  }
+  interface EpySelect {
+    'epyClass': string;
+    'filter': boolean;
+    'filterPlaceholder': string;
+    'label': string;
+    'labelHelper': string;
+    'leftIcon': string;
+    'notFoundCopy': string;
+    'options': Array<string | SelectItem>;
+    'placeholder': string;
+    'rightIcon': string;
+    'textColor': string;
+    'value': any;
   }
 }
 
@@ -93,6 +109,11 @@ declare global {
   var HTMLEpyPopoverElement: {
     prototype: HTMLEpyPopoverElement;
     new (): HTMLEpyPopoverElement;
+  }
+  interface HTMLEpySelectElement extends Components.EpySelect, HTMLStencilElement {}
+  var HTMLEpySelectElement: {
+    prototype: HTMLEpySelectElement;
+    new (): HTMLEpySelectElement;
   };
   interface HTMLElementTagNameMap {
     'epy-button': HTMLEpyButtonElement;
@@ -102,6 +123,7 @@ declare global {
     'epy-input': HTMLEpyInputElement;
     'epy-loader': HTMLEpyLoaderElement;
     'epy-popover': HTMLEpyPopoverElement;
+    'epy-select': HTMLEpySelectElement;
   }
 }
 
@@ -146,6 +168,21 @@ declare namespace LocalJSX {
     'triggerEvent'?: string;
     'width'?: string;
   }
+  interface EpySelect {
+    'epyClass'?: string;
+    'filter'?: boolean;
+    'filterPlaceholder'?: string;
+    'label'?: string;
+    'labelHelper'?: string;
+    'leftIcon'?: string;
+    'notFoundCopy'?: string;
+    'onSelectChange'?: (event: CustomEvent<any>) => void;
+    'options'?: Array<string | SelectItem>;
+    'placeholder'?: string;
+    'rightIcon'?: string;
+    'textColor'?: string;
+    'value'?: any;
+  }
 
   interface IntrinsicElements {
     'epy-button': EpyButton;
@@ -155,6 +192,7 @@ declare namespace LocalJSX {
     'epy-input': EpyInput;
     'epy-loader': EpyLoader;
     'epy-popover': EpyPopover;
+    'epy-select': EpySelect;
   }
 }
 
@@ -171,6 +209,7 @@ declare module "@stencil/core" {
       'epy-input': LocalJSX.EpyInput & JSXBase.HTMLAttributes<HTMLEpyInputElement>;
       'epy-loader': LocalJSX.EpyLoader & JSXBase.HTMLAttributes<HTMLEpyLoaderElement>;
       'epy-popover': LocalJSX.EpyPopover & JSXBase.HTMLAttributes<HTMLEpyPopoverElement>;
+      'epy-select': LocalJSX.EpySelect & JSXBase.HTMLAttributes<HTMLEpySelectElement>;
     }
   }
 }
