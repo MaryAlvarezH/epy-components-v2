@@ -1,391 +1,285 @@
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0"
-    />
-    <title>Stencil Component Starter</title>
-    <link
-      rel="stylesheet"
-      href="https://storage.googleapis.com/assets-front/fonts/epy-icons.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://storage.googleapis.com/assets-front/css/epy-0-0-1.min.css"
-    />
 
-    <script type="module" src="/build/epy-components.esm.js"></script>
-    <script nomodule src="/build/epy-components.js"></script>
-  </head>
-  <body>
-    <h4>epy-button</h4>
-    <div class="epy-row">
-      <h5>Types</h5>
-      <div class="col-2">
-        <epy-button type="btn-primary">primary</epy-button>
-      </div>
-      <div class="col-2">
-        <epy-button type="btn-primary btn-outline">outline</epy-button>
-      </div>
-      <div class="col-2">
-        <epy-button type="btn-destructive">destructive</epy-button>
-      </div>
-      <div class="col-2">
-        <epy-button type="btn-destructive btn-outline">
-          destructive outline
-        </epy-button>
-      </div>
-      <div class="col-2">
-        <epy-button type="btn-border-none">border none</epy-button>
-      </div>
-      <div class="col-2">
-        <epy-button type="btn-link">link</epy-button>
-      </div>
-      <div class="col-2">
-        <epy-button type="btn-default">default</epy-button>
-      </div>
-      <div class="col-2">
-        <epy-button>without class</epy-button>
-      </div>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+  <title>Stencil Component Starter</title>
+  <link rel="stylesheet" href="https://storage.googleapis.com/assets-front/fonts/epy-icons.css" />
+  <link rel="stylesheet" href="https://storage.googleapis.com/assets-front/css/epy-0-0-1.min.css" />
+
+  <script type="module" src="/build/epy-components.esm.js"></script>
+  <script nomodule src="/build/epy-components.js"></script>
+</head>
+
+<body>
+  <h4>epy-button</h4>
+  <div class="epy-row">
+    <h5>Types</h5>
+    <div class="col-2">
+      <epy-button type="btn-primary">primary</epy-button>
+    </div>
+    <div class="col-2">
+      <epy-button type="btn-primary btn-outline">outline</epy-button>
+    </div>
+    <div class="col-2">
+      <epy-button type="btn-destructive">destructive</epy-button>
+    </div>
+    <div class="col-2">
+      <epy-button type="btn-destructive btn-outline">
+        destructive outline
+      </epy-button>
+    </div>
+    <div class="col-2">
+      <epy-button type="btn-border-none">border none</epy-button>
+    </div>
+    <div class="col-2">
+      <epy-button type="btn-link">link</epy-button>
+    </div>
+    <div class="col-2">
+      <epy-button type="btn-default">default</epy-button>
+    </div>
+    <div class="col-2">
+      <epy-button>without class</epy-button>
+    </div>
+  </div>
+
+  <div class="epy-row">
+    <h5>Disabled by class</h5>
+    <div class="col-2">
+      <epy-button type="btn-primary disabled">disabled</epy-button>
+    </div>
+    <div class="col-2">
+      <epy-button type="btn-primary btn-outline disabled">disabled</epy-button>
+    </div>
+    <div class="col-2">
+      <epy-button type="btn-destructive disabled">disabled</epy-button>
+    </div>
+    <div class="col-2">
+      <epy-button type="btn-destructive btn-outline disabled">
+        disabled
+      </epy-button>
+    </div>
+    <div class="col-2">
+      <epy-button type="btn-border-none disabled">disabled</epy-button>
+    </div>
+    <div class="col-2">
+      <epy-button type="btn-link disabled">disabled</epy-button>
+    </div>
+    <div class="col-2">
+      <epy-button type="btn-default disabled">disabled</epy-button>
     </div>
 
-    <div class="epy-row">
-      <h5>Disabled by class</h5>
-      <div class="col-2">
-        <epy-button type="btn-primary disabled">disabled</epy-button>
-      </div>
-      <div class="col-2">
-        <epy-button type="btn-primary btn-outline disabled"
-          >disabled</epy-button
-        >
-      </div>
-      <div class="col-2">
-        <epy-button type="btn-destructive disabled">disabled</epy-button>
-      </div>
-      <div class="col-2">
-        <epy-button type="btn-destructive btn-outline disabled">
-          disabled
-        </epy-button>
-      </div>
-      <div class="col-2">
-        <epy-button type="btn-border-none disabled">disabled</epy-button>
-      </div>
-      <div class="col-2">
-        <epy-button type="btn-link disabled">disabled</epy-button>
-      </div>
-      <div class="col-2">
-        <epy-button type="btn-default disabled">disabled</epy-button>
-      </div>
+    <div class="col-2">
+      <epy-button type="disabled">without class</epy-button>
+    </div>
+  </div>
 
-      <div class="col-2">
-        <epy-button type="disabled">without class</epy-button>
-      </div>
+  <div class="epy-row">
+    <h5>Disabled by props</h5>
+    <div class="col-2">
+      <epy-button type="btn-primary" disabled="true">disabled</epy-button>
+    </div>
+    <div class="col-2">
+      <epy-button type="btn-primary btn-outline" disabled="true">disabled</epy-button>
+    </div>
+    <div class="col-2">
+      <epy-button type="btn-destructive" disabled="true">disabled</epy-button>
+    </div>
+    <div class="col-2">
+      <epy-button type="btn-destructive btn-outline" disabled="true">
+        disabled
+      </epy-button>
+    </div>
+    <div class="col-2">
+      <epy-button type="btn-border-none" disabled="true">disabled</epy-button>
+    </div>
+    <div class="col-2">
+      <epy-button type="btn-link" disabled="true">disabled</epy-button>
+    </div>
+    <div class="col-2">
+      <epy-button type="btn-default" disabled="true">disabled</epy-button>
     </div>
 
-    <div class="epy-row">
-      <h5>Disabled by props</h5>
-      <div class="col-2">
-        <epy-button type="btn-primary" disabled="true">disabled</epy-button>
-      </div>
-      <div class="col-2">
-        <epy-button type="btn-primary btn-outline" disabled="true"
-          >disabled</epy-button
-        >
-      </div>
-      <div class="col-2">
-        <epy-button type="btn-destructive" disabled="true">disabled</epy-button>
-      </div>
-      <div class="col-2">
-        <epy-button type="btn-destructive btn-outline" disabled="true">
-          disabled
-        </epy-button>
-      </div>
-      <div class="col-2">
-        <epy-button type="btn-border-none" disabled="true">disabled</epy-button>
-      </div>
-      <div class="col-2">
-        <epy-button type="btn-link" disabled="true">disabled</epy-button>
-      </div>
-      <div class="col-2">
-        <epy-button type="btn-default" disabled="true">disabled</epy-button>
-      </div>
+    <div class="col-2">
+      <epy-button disabled="true">without class</epy-button>
+    </div>
+  </div>
 
-      <div class="col-2">
-        <epy-button disabled="true">without class</epy-button>
-      </div>
+  <epy-card>
+    <span>card</span>
+  </epy-card>
+
+  <epy-card type="card-panel">
+    <span>card panel</span>
+  </epy-card>
+
+  <epy-loader type="budget-loader"> </epy-loader>
+
+  <!-- <epy-icon icon="icon-import-campaign" style="color:green"></epy-icon> -->
+
+  <div class="epy-row">
+    <div class="col-2">
+      <epy-input type="input-line validate" placeholder="placeholder" label="Label" label-helper="this is label Helper"
+        maxlength="10" error-label="Invalid token"></epy-input>
     </div>
 
-    <epy-card>
-      <span>card</span>
-    </epy-card>
-
-    <epy-card type="card-panel">
-      <span>card panel</span>
-    </epy-card>
-
-    <epy-loader type="budget-loader"> </epy-loader>
-
-    <!-- <epy-icon icon="icon-import-campaign" style="color:green"></epy-icon> -->
-
-    <div class="epy-row">
-      <div class="col-2">
-        <epy-input
-          type="input-line validate"
-          placeholder="placeholder"
-          label="Label"
-          label-helper="this is label Helper"
-          maxlength="10"
-          error-label="Invalid token"
-        ></epy-input>
-      </div>
-
-      <div class="col-2">
-        <epy-input
-          type="input-line validate"
-          label="Label"
-          value="value"
-        ></epy-input>
-      </div>
-
-      <div class="col-2">
-        <epy-input
-          type="input-line validate"
-          input-type="email"
-          label="Email"
-          placeholder="email"
-        ></epy-input>
-      </div>
-
-      <div class="col-2">
-        <epy-input
-          type="input-line validate"
-          label="Email"
-          input-type="email"
-          value="123"
-          validation-status="invalid"
-        ></epy-input>
-      </div>
-
-      <div class="col-2">
-        <epy-input
-          type="input input-line validate"
-          label="Email"
-          input-type="email"
-        >
-          <i slot="content-left" class="epy-icon-edit left"></i>
-          <i slot="content-right" class="epy-icon-user right"></i>
-        </epy-input>
-      </div>
-
-      <div class="col-2">
-        <epy-input
-          type="input-line validate"
-          label="Email"
-          minlength="5"
-          maxlength="5"
-          placeholder="maxlength 5"
-        >
-        </epy-input>
-      </div>
-
-      <div class="col-2">
-        <epy-input
-          type="input-line validate disabled"
-          label="Email"
-          placeholder="disabled by class"
-        >
-        </epy-input>
-      </div>
-
-      <div class="col-2">
-        <epy-input
-          type="input-line validate"
-          label="Email"
-          placeholder="disabled by props"
-          disabled="true"
-        >
-        </epy-input>
-      </div>
-
-      <div class="col-2">
-        <epy-input
-          type="input-line validate"
-          label="Budget"
-          placeholder="0"
-          input-type="number"
-        >
-          <span slot="content-unit" class="unit">$</span>
-          <span slot="content-suffix" class="suffix">MXN</span>
-        </epy-input>
-      </div>
-
-      <div class="col-2">
-        <epy-input label="Email" placeholder="without type"> </epy-input>
-      </div>
+    <div class="col-2">
+      <epy-input type="input-line validate" label="Label" value="value"></epy-input>
     </div>
 
-    <div class="epy-row">
-      <div class="col-2">
-        <epy-input
-          type="input-outline validate"
-          placeholder="placeholder"
-          label="Label"
-          label-helper="this is label Helper"
-        ></epy-input>
-      </div>
-
-      <div class="col-2">
-        <epy-input
-          type="input-outline validate"
-          label="Label"
-          value="value"
-        ></epy-input>
-      </div>
-
-      <div class="col-2">
-        <epy-input
-          type="input-outline validate"
-          input-type="email"
-          label="Email"
-          placeholder="email"
-        ></epy-input>
-      </div>
-
-      <div class="col-2">
-        <epy-input
-          type="input-outline validate"
-          label="Email"
-          input-type="email"
-          value="123"
-          validation-status="invalid"
-        ></epy-input>
-      </div>
-
-      <div class="col-2">
-        <epy-input
-          type="input input-outline validate"
-          label="Email"
-          input-type="email"
-        >
-          <i slot="content-left" class="epy-icon-edit left"></i>
-          <i slot="content-right" class="epy-icon-user right"></i>
-        </epy-input>
-      </div>
-
-      <div class="col-2">
-        <epy-input
-          type="input input-outline validate"
-          label="Nombre"
-          input-type="text"
-          clear="true"
-        >
-          <i slot="content-left" class="epy-icon-edit left"></i>
-          <i slot="content-right"></i>
-        </epy-input>
-      </div>
-
-      <div class="col-2">
-        <epy-input
-          type="input-outline validate"
-          label="Email"
-          minlength="5"
-          maxlength="5"
-          placeholder="maxlength 5"
-        >
-        </epy-input>
-      </div>
-
-      <div class="col-2">
-        <epy-input
-          type="input-outline validate disabled"
-          label="Email"
-          placeholder="disabled by class"
-        >
-        </epy-input>
-      </div>
-
-      <div class="col-2">
-        <epy-input
-          type="input-outline validate"
-          label="Email"
-          placeholder="disabled by props"
-          disabled="true"
-        >
-        </epy-input>
-      </div>
-
-      <div class="col-2">
-        <epy-input
-          type="input-outline validate"
-          label="Budget"
-          placeholder="0"
-          input-type="number"
-        >
-          <span slot="content-unit" class="unit">$</span>
-          <span slot="content-suffix" class="suffix">MXN</span>
-        </epy-input>
-      </div>
+    <div class="col-2">
+      <epy-input type="input-line validate" input-type="email" label="Email" placeholder="email"></epy-input>
     </div>
 
-    <div class="epy-row">
+    <div class="col-2">
+      <epy-input type="input-line validate" label="Email" input-type="email" value="123" validation-status="invalid">
+      </epy-input>
+    </div>
+
+    <div class="col-2">
+      <epy-input type="input input-line validate" label="Email" input-type="email">
+        <i slot="content-left" class="epy-icon-edit left"></i>
+        <i slot="content-right" class="epy-icon-user right"></i>
+      </epy-input>
+    </div>
+
+    <div class="col-2">
+      <epy-input type="input-line validate" label="Email" minlength="5" maxlength="5" placeholder="maxlength 5">
+      </epy-input>
+    </div>
+
+    <div class="col-2">
+      <epy-input type="input-line validate disabled" label="Email" placeholder="disabled by class">
+      </epy-input>
+    </div>
+
+    <div class="col-2">
+      <epy-input type="input-line validate" label="Email" placeholder="disabled by props" disabled="true">
+      </epy-input>
+    </div>
+
+    <div class="col-2">
+      <epy-input type="input-line validate" label="Budget" placeholder="0" input-type="number">
+        <span slot="content-unit" class="unit">$</span>
+        <span slot="content-suffix" class="suffix">MXN</span>
+      </epy-input>
+    </div>
+
+    <div class="col-2">
+      <epy-input label="Email" placeholder="without type"> </epy-input>
+    </div>
+  </div>
+
+  <div class="epy-row">
+    <div class="col-2">
+      <epy-input type="input-outline validate" placeholder="placeholder" label="Label"
+        label-helper="this is label Helper"></epy-input>
+    </div>
+
+    <div class="col-2">
+      <epy-input type="input-outline validate" label="Label" value="value"></epy-input>
+    </div>
+
+    <div class="col-2">
+      <epy-input type="input-outline validate" input-type="email" label="Email" placeholder="email"></epy-input>
+    </div>
+
+    <div class="col-2">
+      <epy-input type="input-outline validate" label="Email" input-type="email" value="123" validation-status="invalid">
+      </epy-input>
+    </div>
+
+    <div class="col-2">
+      <epy-input type="input input-outline validate" label="Email" input-type="email">
+        <i slot="content-left" class="epy-icon-edit left"></i>
+        <i slot="content-right" class="epy-icon-user right"></i>
+      </epy-input>
+    </div>
+
+    <div class="col-2">
+      <epy-input type="input input-outline validate" label="Nombre" input-type="text" clear="true">
+        <i slot="content-left" class="epy-icon-edit left"></i>
+        <i slot="content-right"></i>
+      </epy-input>
+    </div>
+
+    <div class="col-2">
+      <epy-input type="input-outline validate" label="Email" minlength="5" maxlength="5" placeholder="maxlength 5">
+      </epy-input>
+    </div>
+
+    <div class="col-2">
+      <epy-input type="input-outline validate disabled" label="Email" placeholder="disabled by class">
+      </epy-input>
+    </div>
+
+    <div class="col-2">
+      <epy-input type="input-outline validate" label="Email" placeholder="disabled by props" disabled="true">
+      </epy-input>
+    </div>
+
+    <div class="col-2">
+      <epy-input type="input-outline validate" label="Budget" placeholder="0" input-type="number">
+        <span slot="content-unit" class="unit">$</span>
+        <span slot="content-suffix" class="suffix">MXN</span>
+      </epy-input>
+    </div>
+  </div>
+
+  <div class="epy-row">
+    <div class="col-3">
+      <epy-input type="input-line validate" label="Textarea" placeholder="disabled by class" rows="3"
+        error-label="Invalid token" required="true" maxlength=10>
+      </epy-input>
+    </div>
+    <div class="col-3"></div>
+  </div>
+
+  <h4>Styles from CDN</h4>
+  <div class="input input-line counter required validate">
+    <label class="input-label">Label</label>
+    <div class="input-container">
+      <input class="input-text" type="text" maxlength="10" />
+    </div>
+    <div class="input-aux-container">
+      <div class="helper-text">Error Message</div>
+      <div class="number">0/10</div>
+    </div>
+  </div>
+
+  <h3>Epy Select</h3>
+  <div class="epy-container">
+    <div class="row">
       <div class="col-3">
-        <epy-input
-          type="input-line validate"
-          label="Textarea"
-          placeholder="disabled by class"
-          rows="3"
-          error-label="Invalid token"
-          required="true"
-          maxlength=10
-        >
-        </epy-input>
-      </div>
-      <div class="col-3"></div>
-    </div>
-
-    <h4>Styles from CDN</h4>
-    <div class="input input-line counter required validate">
-      <label class="input-label">Label</label>
-      <div class="input-container">
-        <input class="input-text" type="text" maxlength="10" />
-      </div>
-      <div class="input-aux-container">
-        <div class="helper-text">Error Message</div>
-        <div class="number">0/10</div>
-      </div>
-    </div>
-
-    <h3>Epy Select</h3>
-    <div class="epy-container">
-      <div class="row">
-        <div class="col-3">
-          <!-- <epy-select placeholder="Selecciona algo">
+        <!-- <epy-select placeholder="Selecciona algo">
             <option class="option">Option 1</option>
             <option class="option">Option 2</option>
           </epy-select> -->
-        </div>
-        <div class="col-3">
-          <epy-select id="epy-select-uno" type="primary" label="Sabores" label-helper="(de helado)" placeholder="Selecciona sabor">
-          </epy-select>
-          <epy-select id="epy-select-dos" type="primary" label="Sabores" label-helper="(de helado)" placeholder="Selecciona sabor">
-          </epy-select>
-          <script>
-            let select = document.getElementById('epy-select-uno');
-            select.options = [{label:'chocolate',value:'CHO'},{label:'fresa',value:'FRE'},{label:'vainilla',value:'VAI'}];
-            let selectdos = document.getElementById('epy-select-dos');
-            selectdos.options = [{label:'chocolate',value:'CHO'},{label:'fresa',value:'FRE'},{label:'vainilla',value:'VAI'}];
-            select.addEventListener('selectChange',(ev)=>{
-              console.log('UN SELECT CAMBIO', ev);
-            })
-          </script>
-        </div>
       </div>
       <div class="col-3">
-
+        <epy-select id="epy-select-uno" epy-class="select-primary" label="Sabores" label-helper="(de helado)"
+          placeholder="Selecciona sabor">
+        </epy-select>
       </div>
     </div>
+    <div class="col-3">
+      <epy-select id="epy-select-dos" filter left-icon="epy-icon-edit" epy-class="select-outline" label="Sabores" label-helper="(de helado)"
+        placeholder="Selecciona sabor">
+      </epy-select>
+      <script>
+        let select = document.getElementById('epy-select-uno');
+        select.options = [{ label: 'chocolate', value: 'CHO' }, { label: 'fresa', value: 'FRE' }, { label: 'vainilla', value: 'VAI' }];
+        let selectdos = document.getElementById('epy-select-dos');
+        selectdos.options = [{ label: 'chocolate', value: 'CHO' }, { label: 'fresa', value: 'FRE' }, { label: 'vainilla', value: 'VAI' }];
+        selectdos.addEventListener('selectChange', (ev) => {
+          console.log('UN SELECT CAMBIO', ev);
+        })
+      </script>
 
-  </body>
+    </div>
+  </div>
+
+</body>
+
 </html>

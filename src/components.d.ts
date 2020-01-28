@@ -43,11 +43,17 @@ export namespace Components {
     'type': string;
   }
   interface EpySelect {
+    'epyClass': string;
+    'filter': boolean;
+    'filterPlaceholder': string;
     'label': string;
     'labelHelper': string;
-    'options': Array<string|SelectItem>;
+    'leftIcon': string;
+    'notFoundCopy': string;
+    'options': Array<string | SelectItem>;
     'placeholder': string;
-    'type': string;
+    'rightIcon': string;
+    'textColor': string;
     'value': any;
   }
 }
@@ -134,12 +140,18 @@ declare namespace LocalJSX {
     'type'?: string;
   }
   interface EpySelect {
+    'epyClass'?: string;
+    'filter'?: boolean;
+    'filterPlaceholder'?: string;
     'label'?: string;
     'labelHelper'?: string;
+    'leftIcon'?: string;
+    'notFoundCopy'?: string;
     'onSelectChange'?: (event: CustomEvent<any>) => void;
-    'options'?: Array<string|SelectItem>;
+    'options'?: Array<string | SelectItem>;
     'placeholder'?: string;
-    'type'?: string;
+    'rightIcon'?: string;
+    'textColor'?: string;
     'value'?: any;
   }
 
