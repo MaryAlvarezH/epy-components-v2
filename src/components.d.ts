@@ -64,6 +64,11 @@ export namespace Components {
     'textColor': string;
     'value': any;
   }
+  interface EpyTooltip {
+    'distance': number;
+    'placement': any;
+    'skidding': number;
+  }
 }
 
 declare global {
@@ -116,6 +121,12 @@ declare global {
     prototype: HTMLEpySelectElement;
     new (): HTMLEpySelectElement;
   };
+
+  interface HTMLEpyTooltipElement extends Components.EpyTooltip, HTMLStencilElement {}
+  var HTMLEpyTooltipElement: {
+    prototype: HTMLEpyTooltipElement;
+    new (): HTMLEpyTooltipElement;
+  };
   interface HTMLElementTagNameMap {
     'epy-button': HTMLEpyButtonElement;
     'epy-card': HTMLEpyCardElement;
@@ -125,6 +136,7 @@ declare global {
     'epy-loader': HTMLEpyLoaderElement;
     'epy-popover': HTMLEpyPopoverElement;
     'epy-select': HTMLEpySelectElement;
+    'epy-tooltip': HTMLEpyTooltipElement;
   }
 }
 
@@ -184,6 +196,11 @@ declare namespace LocalJSX {
     'textColor'?: string;
     'value'?: any;
   }
+  interface EpyTooltip {
+    'distance'?: number;
+    'placement'?: any;
+    'skidding'?: number;
+  }
 
   interface IntrinsicElements {
     'epy-button': EpyButton;
@@ -194,6 +211,7 @@ declare namespace LocalJSX {
     'epy-loader': EpyLoader;
     'epy-popover': EpyPopover;
     'epy-select': EpySelect;
+    'epy-tooltip': EpyTooltip;
   }
 }
 
@@ -211,6 +229,7 @@ declare module "@stencil/core" {
       'epy-loader': LocalJSX.EpyLoader & JSXBase.HTMLAttributes<HTMLEpyLoaderElement>;
       'epy-popover': LocalJSX.EpyPopover & JSXBase.HTMLAttributes<HTMLEpyPopoverElement>;
       'epy-select': LocalJSX.EpySelect & JSXBase.HTMLAttributes<HTMLEpySelectElement>;
+      'epy-tooltip': LocalJSX.EpyTooltip & JSXBase.HTMLAttributes<HTMLEpyTooltipElement>;
     }
   }
 }

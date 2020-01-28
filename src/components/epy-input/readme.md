@@ -33,6 +33,19 @@
 | `epychange` |             | `CustomEvent<any>` |
 
 
+## Dependencies
+
+### Used by
+
+ - [epy-select](../epy-select)
+
+### Graph
+```mermaid
+graph TD;
+  epy-select --> epy-input
+  style epy-input fill:#f9f,stroke:#333,stroke-width:4px
+```
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*
