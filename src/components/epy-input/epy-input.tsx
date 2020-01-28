@@ -42,6 +42,8 @@ export class EpyInput {
   inputHeight: number;
   inputClass: string;
 
+  show: boolean;
+
   // Slots
   @Element() hostElement: HTMLStencilElement;
 
@@ -57,6 +59,7 @@ export class EpyInput {
       !this.disabled ||
       !this.type
     ) {
+      this.show = true;
       this.value = ev.target ? ev.target.value : null;
       this.epychange.emit(this.value);
     }
@@ -89,6 +92,8 @@ export class EpyInput {
   }
 
   componentWillLoad() {
+    this.value = this.value ? this.value : "";
+
     this.hasContentLeftSlot = !!this.hostElement.querySelector(
       '[slot="content-left"]'
     );
@@ -104,7 +109,6 @@ export class EpyInput {
   }
 
   render() {
-    this.value = this.value ? this.value : "";
     if(this.errorLabel) { var error = true };
     return (
       <div class={"input " + this.type}>
@@ -140,22 +144,22 @@ export class EpyInput {
           {!this.rows ? (
             <input
               class={this.inputClass}
-              value={this.value}
               placeholder={this.placeholder}
               type={this.inputType}
               maxlength={this.maxlength}
               minlength={this.minlength}
               disabled={this.disabled}
+              value={this.value}
               onInput={ev => this.handleChange(ev)}
             />
           ) : (
             <textarea
               class={this.inputClass}
-              value={this.value}
               placeholder={this.placeholder}
               maxlength={this.maxlength}
               minlength={this.minlength}
               disabled={this.disabled}
+              value={this.value}
               onKeyUp={(ev: UIEvent) => this.setInputHeight(ev)}
               onKeyDown={(ev: UIEvent) => this.setInputHeight(ev)}
               onInput={ev => this.handleChange(ev)}
@@ -175,7 +179,7 @@ export class EpyInput {
         </div>
         <div class="input-aux-container">
           {this.errorLabel ? ( <div class="helper-text"> {this.errorLabel} </div> ) : null}
-          {this.maxlength ? ( <div class={"number " + (this.errorLabel ? 'text-red' : null) }> {" "} {this.value.length} / {this.maxlength} {" "} </div>) : null}
+          {this.maxlength && this.show ? ( <div class={"number " + (this.errorLabel ? 'text-red' : null) }> {" "} {this.value.length} / {this.maxlength} {" "} </div>) : null}
         </div>
       </div>
     );
