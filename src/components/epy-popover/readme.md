@@ -13,6 +13,7 @@
 | `placement`    | `placement`     |             | `any`    | `undefined` |
 | `skidding`     | `skidding`      |             | `number` | `undefined` |
 | `triggerEvent` | `trigger-event` |             | `string` | `undefined` |
+| `width`        | `width`         |             | `string` | `undefined` |
 
 
 ----------------------------------------------
