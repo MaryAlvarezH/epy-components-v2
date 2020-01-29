@@ -1,4 +1,4 @@
-import { Component, h, State } from "@stencil/core";
+import { Component, h, State, Prop } from "@stencil/core";
 
 @Component({
   tag: "epy-droptip",
@@ -7,6 +7,7 @@ import { Component, h, State } from "@stencil/core";
 })
 export class Droptip {
   @State() private droptipActive: boolean;
+  @Prop() contentBgColor: string;
 
   render() {
     return (
@@ -17,15 +18,17 @@ export class Droptip {
         }}
         tabindex="0"
         onClick={() => (this.droptipActive = !this.droptipActive)}
-        onBlur={() => (this.droptipActive = false)}
       >
         <div class="droptip-trigger">
           <div class="droptip-title">
-            <slot name="title"></slot>
+            <slot name="trigger"></slot>
           </div>
         </div>
-        <div class="droptip-content">
-          <slot name="content"></slot>
+        <div
+          class="droptip-content"
+          style={{ "background-color": this.contentBgColor }}
+        >
+          <slot></slot>
         </div>
       </div>
     );

@@ -1,58 +1,532 @@
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0"
+    />
+    <title>Stencil Component Starter</title>
+    <link
+      rel="stylesheet"
+      href="https://storage.googleapis.com/assets-front/fonts/epy-icons.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://storage.googleapis.com/assets-front/css/epy-0-0-10.min.css"
+    />
 
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
-  <title>Stencil Component Starter</title>
-  <link rel="stylesheet" href="https://storage.googleapis.com/assets-front/fonts/epy-icons.css" />
-  <link rel="stylesheet" href="https://storage.googleapis.com/assets-front/css/epy-0-0-1.min.css" />
+    <script type="module" src="/build/epy-components.esm.js"></script>
+    <script nomodule src="/build/epy-components.js"></script>
+  </head>
+  <body>
 
-  <script type="module" src="/build/epy-components.esm.js"></script>
-  <script nomodule src="/build/epy-components.js"></script>
-</head>
+  <!-- Button -->
+  <div class="epy-row">
+    <h4>epy-button</h4>
+    <h5>Types</h5>
+    <div class="col-2">
+      <epy-button type="btn-primary">primary</epy-button>
+    </div>
+    <div class="col-2">
+      <epy-button type="btn-primary btn-outline">outline</epy-button>
+    </div>
+    <div class="col-2">
+      <epy-button type="btn-destructive">destructive</epy-button>
+    </div>
+    <div class="col-2">
+      <epy-button type="btn-destructive btn-outline">
+        destructive outline
+      </epy-button>
+    </div>
+    <div class="col-2">
+      <epy-button type="btn-border-none">border none</epy-button>
+    </div>
+    <div class="col-2">
+      <epy-button type="btn-link">link</epy-button>
+    </div>
+    <div class="col-2">
+      <epy-button type="btn-default">default</epy-button>
+    </div>
+    <div class="col-2">
+      <epy-button>without class</epy-button>
+    </div>
+  </div>
+  <div class="epy-row">
+  <div class="col-2">
+      <epy-button type="btn-destructive btn-outline">
+        destructive outline
+      </epy-button>
+    </div>
+    <div class="col-2">
+      <epy-button type="btn-border-none">border none</epy-button>
+    </div>
+    <div class="col-2">
+      <epy-button type="btn-link">link</epy-button>
+    </div>
+    <div class="col-2">
+      <epy-button type="btn-default">default</epy-button>
+    </div>
+    <div class="col-2">
+      <epy-button>without class</epy-button>
+    </div>
+  </div>
+  <div class="epy-row">
+    <h5>Disabled by class</h5>
+    <div class="col-2">
+      <epy-button type="btn-primary disabled">disabled</epy-button>
+    </div>
+    <div class="col-2">
+      <epy-button type="btn-primary btn-outline disabled">disabled</epy-button>
+    </div>
+    <div class="col-2">
+      <epy-button type="btn-destructive disabled">disabled</epy-button>
+    </div>
+    <div class="col-2">
+      <epy-button type="btn-destructive btn-outline disabled">
+        disabled
+      </epy-button>
+    </div>
+    <div class="col-2">
+      <epy-button type="btn-border-none disabled">disabled</epy-button>
+    </div>
+    <div class="col-2">
+      <epy-button type="btn-link disabled">disabled</epy-button>
+    </div>
+    <div class="col-2">
+      <epy-button type="btn-default disabled">disabled</epy-button>
+    </div>
 
-<body>
+    <div class="col-2">
+      <epy-button type="disabled">without class</epy-button>
+    </div>
+  </div>
+  <div class="epy-row">
+    <h5>Disabled by props</h5>
+    <div class="col-2">
+      <epy-button type="btn-primary" disabled="true">disabled</epy-button>
+    </div>
+    <div class="col-2">
+      <epy-button type="btn-primary btn-outline" disabled="true">disabled</epy-button>
+    </div>
+    <div class="col-2">
+      <epy-button type="btn-destructive" disabled="true">disabled</epy-button>
+    </div>
+    <div class="col-2">
+      <epy-button type="btn-destructive btn-outline" disabled="true">
+        disabled
+      </epy-button>
+    </div>
+    <div class="col-2">
+      <epy-button type="btn-border-none" disabled="true">disabled</epy-button>
+    </div>
+    <div class="col-2">
+      <epy-button type="btn-link" disabled="true">disabled</epy-button>
+    </div>
+    <div class="col-2">
+      <epy-button type="btn-default" disabled="true">disabled</epy-button>
+    </div>
+
+    <div class="col-2">
+      <epy-button disabled="true">without class</epy-button>
+    </div>
+  </div>
+
+  <!-- Card -->
+  <epy-card>
+    <span>card</span>
+  </epy-card>
+  <epy-card type="card-panel">
+    <span>card panel</span>
+  </epy-card>
+
+  <!-- Loader -->
+  <epy-loader type="budget-loader"> </epy-loader>
+
+  <!-- Input -->
   <div class="epy-row">
     <div class="col-2">
       <epy-input type="input-line validate" placeholder="placeholder" label="Label" label-helper="this is label Helper"
-        maxlength="10" error-label="Invalid token" required=true clear=true validation-status="invalid">
+        maxlength="10" error-label="Invalid token"></epy-input>
+    </div>
+
+    <div class="col-2">
+      <epy-input type="input-line validate" label="Label" value="value"></epy-input>
+    </div>
+
+    <div class="col-2">
+      <epy-input type="input-line validate" input-type="email" label="Email" placeholder="email"></epy-input>
+    </div>
+
+    <div class="col-2">
+      <epy-input type="input-line validate" label="Email" input-type="email" value="123" validation-status="invalid">
+      </epy-input>
+    </div>
+
+    <div class="col-2">
+      <epy-input type="input input-line validate" label="Email" input-type="email">
+        <i slot="content-left" class="epy-icon-edit left"></i>
+        <i slot="content-right" class="epy-icon-user right"></i>
+      </epy-input>
+    </div>
+
+    <div class="col-2">
+      <epy-input type="input-line validate" label="Email" minlength="5" maxlength="5" placeholder="maxlength 5">
+      </epy-input>
+    </div>
+
+    <div class="col-2">
+      <epy-input type="input-line validate disabled" label="Email" placeholder="disabled by class">
+      </epy-input>
+    </div>
+
+    <div class="col-2">
+      <epy-input type="input-line validate" label="Email" placeholder="disabled by props" disabled="true">
+      </epy-input>
+    </div>
+
+    <div class="col-2">
+      <epy-input type="input-line validate" label="Budget" placeholder="0" input-type="number">
+        <span slot="content-unit" class="unit">$</span>
+        <span slot="content-suffix" class="suffix">MXN</span>
+      </epy-input>
+    </div>
+
+    <div class="col-2">
+      <epy-input label="Email" placeholder="without type"> </epy-input>
+    </div>
+  </div>
+
+  <div class="epy-row">
+    <div class="col-2">
+      <epy-input type="input-outline validate" placeholder="placeholder" label="Label"
+        label-helper="this is label Helper"></epy-input>
+    </div>
+
+    <div class="col-2">
+      <epy-input type="input-outline validate" label="Label" value="value"></epy-input>
+    </div>
+
+    <div class="col-2">
+      <epy-input type="input-outline validate" input-type="email" label="Email" placeholder="email"></epy-input>
+    </div>
+
+    <div class="col-2">
+      <epy-input type="input-outline validate" label="Email" input-type="email" value="123" validation-status="invalid">
+      </epy-input>
+    </div>
+
+    <div class="col-2">
+      <epy-input type="input input-outline validate" label="Email" input-type="email">
+        <i slot="content-left" class="epy-icon-edit left"></i>
+        <i slot="content-right" class="epy-icon-user right"></i>
+      </epy-input>
+    </div>
+
+    <div class="col-2">
+      <epy-input type="input input-outline validate" label="Nombre" input-type="text" clear="true">
         <i slot="content-left" class="epy-icon-edit left"></i>
         <i slot="content-right"></i>
       </epy-input>
     </div>
 
+    <div class="col-2">
+      <epy-input type="input-outline validate" label="Email" minlength="5" maxlength="5" placeholder="maxlength 5">
+      </epy-input>
+    </div>
+
+    <div class="col-2">
+      <epy-input type="input-outline validate disabled" label="Email" placeholder="disabled by class">
+      </epy-input>
+    </div>
+
+    <div class="col-2">
+      <epy-input type="input-outline validate" label="Email" placeholder="disabled by props" disabled="true">
+      </epy-input>
+    </div>
+
+    <div class="col-2">
+      <epy-input type="input-outline validate" label="Budget" placeholder="0" input-type="number">
+        <span slot="content-unit" class="unit">$</span>
+        <span slot="content-suffix" class="suffix">MXN</span>
+      </epy-input>
+    </div>
   </div>
 
   <div class="epy-row">
     <div class="col-3">
-      <epy-input type="input-line validate" label="Textarea" placeholder="disabled by class" rows="3"
-        error-label="Invalid token" required="true">
+      <epy-input
+        type="input-line validate"
+        label="Textarea"
+        placeholder="disabled by class"
+        rows="3"
+        error-label="Invalid token"
+        required="true"
+        maxlength="10"
+      >
       </epy-input>
     </div>
-    <div class="col-1">
-      <epy-checkbox label="Test"></epy-checkbox>
+    <div class="col-3"></div>
+  </div>
+
+  <!-- Tooltip -->
+  <div class="epy-row">
+    <h4>Tooltip</h4>
+    <div class="col-2">
+      <span>
+        Placement
+        <span class="text-small" style="display: block;">
+          bottom (default)
+        </span>
+      </span>
+      <epy-tooltip>
+        <span slot="trigger">Hover me!</span>
+        bottom, bottom-start, bottom-end
+      </epy-tooltip>
     </div>
-    <div class="col-3">
-      <epy-checkbox></epy-checkbox>
+
+    <div class="col-2">
+      <span>
+        Placement
+        <span class="text-small" style="display: block;">
+          top
+        </span>
+      </span>
+      <epy-tooltip placement="top">
+        <span slot="trigger">Hover me!</span>
+        top, top-start, top-end
+      </epy-tooltip>
     </div>
-    <div class="col-3">
-      <epy-checkbox></epy-checkbox>
+
+    <div class="col-2">
+      <span>
+        Placement
+        <span class="text-small" style="display: block;">
+          right
+        </span>
+      </span>
+      <epy-tooltip placement="right">
+        <span slot="trigger">Hover me!</span>
+        right, right-start, right-end
+      </epy-tooltip>
+    </div>
+
+    <div class="col-2">
+      <span>
+        Placement
+        <span class="text-small" style="display: block;">
+          left
+        </span>
+      </span>
+      <epy-tooltip placement="left">
+        <span slot="trigger">Hover me!</span>
+        left, left-start, left-end
+      </epy-tooltip>
+    </div>
+
+    <div class="col-2">
+      <span>
+        Placement
+        <span class="text-small" style="display: block;">
+          auto
+        </span>
+      </span>
+      <epy-tooltip placement="auto">
+        <span slot="trigger">Hover me!</span>
+        auto, auto-start, auto-end
+      </epy-tooltip>
     </div>
   </div>
 
-  <h4>Styles from CDN</h4>
-  <div class="input input-line counter required validate">
-    <label class="input-label">Label</label>
-    <div class="input-container">
-      <input class="input-text" type="text" maxlength="10" />
+  <!-- Droptip -->
+  <div class="epy-row">
+    <h4>Droptip</h4>
+    <div class="col-4">
+      <epy-droptip>
+        <span slot="trigger">This is a droptip</span>
+          <div class="epy-row">
+            <div class="col-6">
+              This is a slot called "content"
+            </div>
+            <div class="col-6">
+                You can custom it as you want
+              </div>
+          </div>
+      </epy-droptip>
     </div>
-    <div class="input-aux-container">
-      <div class="helper-text">Error Message</div>
-      <div class="number">0/10</div>
+
+    <div class="col-4">
+      <epy-droptip content-bg-color="#22b5b5">
+        <span slot="trigger">This is a droptip</span>
+          <div class="epy-row">
+            <div class="col-6">
+              This is a slot called "content"
+            </div>
+            <div class="col-6">
+                You can custom it as you want
+              </div>
+          </div>
+      </epy-droptip>
     </div>
   </div>
 
+  <!-- Popover -->
+  <div class="row">
+      <h4>Popover</h4>
+    <div class="epy-row">
+      <div class="col-2">
+        <span>
+          Default behaivor
+          <span class="text-small" style="display: block;">
+            Hover & bottom position
+          </span>
+        </span>
+
+        <epy-popover>
+          bottom (default), bottom-start, bottom-end
+        </epy-popover>
+      </div>
+
+      <div class="col-2">
+        <span>
+          Placement
+          <span class="text-small" style="display: block;">
+            top
+          </span>
+        </span>
+        <epy-popover placement="top">
+          top, top-start, top-end
+        </epy-popover>
+      </div>
+
+      <div class="col-2">
+        <span>
+          Placement
+          <span class="text-small" style="display: block;">
+            right
+          </span>
+        </span>
+        <epy-popover placement="right-start">
+          right, right-start, right-end
+        </epy-popover>
+      </div>
+
+      <div class="col-2">
+        <span>
+          Placement
+          <span class="text-small" style="display: block;">
+            left
+          </span>
+        </span>
+        <epy-popover placement="left-start">
+          left, left-start, left-end
+        </epy-popover>
+      </div>
+
+      <div class="col-2">
+        <span>
+          Placement
+          <span class="text-small" style="display: block;">
+            auto
+          </span>
+        </span>
+        <epy-popover placement="auto">
+          auto, auto-start, auto-end
+        </epy-popover>
+      </div>
+
+      <div class="col-2">
+        <span>Custom trigger</span>
+        <epy-popover>
+          <span slot="trigger" class="text-green">This is a slot</span>
+          &lt;span slot="trigger"&gt; This is a slot &lt;/span&gt;
+        </epy-popover>
+      </div>
+    </div>
+    <div class="epy-row">
+      <div class="col-2">
+        <span>Event click</span>
+        <epy-popover trigger-event="click">
+          <span slot="trigger" class="text-green"
+            >Drop this<i class="epy-icon-caret-down"></i
+          ></span>
+          custom slot + event="click"
+        </epy-popover>
+      </div>
+
+      <div class="col-2">
+        <span>Event click</span>
+        <epy-popover trigger-event="click" placement="right-start">
+          <span slot="trigger" class="text-green"
+            >Drop this<i class="epy-icon-caret-down"></i
+          ></span>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam
+          incidunt molestiae aperiam quasi dolorum totam quos, nobis provident
+          autem, est eius doloremque facere eos suscipit laboriosam corrupti
+          tenetur eligendi sapiente!
+        </epy-popover>
+      </div>
+
+
+      <div class="col-2">
+          <span>Width property</span>
+          <epy-popover placement="right" width="600px">
+            The width is 100% by default, but it can set with width property<br>
+            &lt;epy-popover width="600px"&gt;
+          </epy-popper>
+        </div>
+
+      <div class="col-2">
+        <span>Skiding property</span>
+        <epy-popover placement="right" skidding="30">
+          The popper is offset 30px along the reference. <br>
+          &lt;epy-popover placement="right" skidding="30"&gt;
+        </epy-popper>
+      </div>
+
+      <div class="col-2">
+          <span>Distance property</span>
+          <epy-popover placement="right" distance="30">
+            The popper is offset 30px away the reference. <br>
+            &lt;epy-popover placement="right" skidding="30"&gt;
+          </epy-popper>
+        </div>
+    </div>
+  </div>
+
+
+
+
+  <h3>Epy Select</h3>
+  <div class="epy-container">
+    <div class="row">
+      <div class="col-3">
+        <!-- <epy-select placeholder="Selecciona algo">
+            <option class="option">Option 1</option>
+            <option class="option">Option 2</option>
+          </epy-select> -->
+      </div>
+      <div class="col-3">
+        <epy-select id="epy-select-uno" epy-class="select-primary" label="Sabores" label-helper="(de helado)"
+          placeholder="Selecciona sabor">
+        </epy-select>
+      </div>
+    </div>
+    <div class="col-3">
+      <epy-select id="epy-select-dos" filter left-icon="epy-icon-edit" epy-class="select-outline" label="Sabores" label-helper="(de helado)"
+        placeholder="Selecciona sabor">
+      </epy-select>
+      <script>
+        let select = document.getElementById('epy-select-uno');
+        select.options = [{ label: 'chocolate', value: 'CHO' }, { label: 'fresa', value: 'FRE' }, { label: 'rompome', value: 'ROMP' }, { label: 'coco', value: 'COC' }, { label: 'napolitano', value: 'NAP' }, { label: 'oreo', value: 'ORE' },  { label: 'cajeta', value: 'CAJ' },  { label: 'frambruecita', value: 'FAM' }, { label: 'queso', value: 'QUE' }];
+        let selectdos = document.getElementById('epy-select-dos');
+        selectdos.options = [{ label: 'chocolate', value: 'CHO' }, { label: 'fresa', value: 'FRE' }, { label: 'rompome', value: 'ROMP' }, { label: 'coco', value: 'COC' }, { label: 'napolitano', value: 'NAP' }, { label: 'oreo', value: 'ORE' },  { label: 'cajeta', value: 'CAJ' },  { label: 'frambruecita', value: 'FAM' }, { label: 'queso', value: 'QUE' }];
+        selectdos.addEventListener('selectChange', (ev) => {
+          console.log('UN SELECT CAMBIO', ev);
+        })
+      </script>
+
+    </div>
 
   <script>
     // Multiple Checkboxes
@@ -63,6 +537,13 @@
       });
     });
   </script>
+
+    <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi exercitationem, laboriosam consequatur esse nesciunt aut sed atque deserunt, iste vitae recusandae rem repudiandae quia culpa accusamus animi nihil blanditiis ullam?</h1>
+    <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi exercitationem, laboriosam consequatur esse nesciunt aut sed atque deserunt, iste vitae recusandae rem repudiandae quia culpa accusamus animi nihil blanditiis ullam?</h1>
+    <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi exercitationem, laboriosam consequatur esse nesciunt aut sed atque deserunt, iste vitae recusandae rem repudiandae quia culpa accusamus animi nihil blanditiis ullam?</h1>
+    <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi exercitationem, laboriosam consequatur esse nesciunt aut sed atque deserunt, iste vitae recusandae rem repudiandae quia culpa accusamus animi nihil blanditiis ullam?</h1>
+    <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi exercitationem, laboriosam consequatur esse nesciunt aut sed atque deserunt, iste vitae recusandae rem repudiandae quia culpa accusamus animi nihil blanditiis ullam?</h1>
+  </div>
 
 </body>
 
