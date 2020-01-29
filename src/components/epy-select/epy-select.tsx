@@ -8,6 +8,7 @@ import {
   State,
   Listen
 } from "@stencil/core";
+import { createPopper } from "@popperjs/core";
 
 export interface SelectItem {
   label: string;
@@ -41,6 +42,10 @@ export class EpySelect {
   selectEl!: HTMLElement;
   query = "";
 
+  //popper
+  private trigger: HTMLElement;
+  private content: HTMLElement;
+
   @Listen("mousedown", { target: "window" })
   closeOnOutsideClick(e) {
     if (!this.el.contains(e.target)) {
@@ -52,6 +57,17 @@ export class EpySelect {
 
   componentWillLoad() {
     this.filteredOptions = null;
+  }
+
+  componentDidLoad() {
+    this.trigger = this.el.querySelector(".select-trigger");
+    this.content = this.el.querySelector(".select-details");
+  }
+
+  loadPopper() {
+    createPopper(this.trigger, this.content, {
+      placement: "bottom"
+    });
   }
 
   select(option: string | SelectItem) {
@@ -99,7 +115,7 @@ export class EpySelect {
     let showOpts = this.filteredOptions ? this.filteredOptions : this.options;
     if (this.filter) {
       return (
-        <div class="select-details">
+        <div class="select-details" role="tooltip">
           <epy-input
             type="input-outline"
             value={this.query}
@@ -128,7 +144,7 @@ export class EpySelect {
       );
     } else {
       return (
-        <div class="select-details">
+        <div class="select-details" role="tooltip">
           <div class="options-container">
             {this.options.map(o => (
               <slot name="option">
@@ -167,6 +183,9 @@ export class EpySelect {
               ) : null}
             </div>
           ) : null}
+
+          {/* {this.loadPopper()} */}
+
           <div class="select-trigger" onClick={() => this.setIsOpen()}>
             {this.leftIcon ? <i class={this.leftIcon}></i> : null}
             <div class="select-value">

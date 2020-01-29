@@ -18,7 +18,6 @@ export class Droptip {
         }}
         tabindex="0"
         onClick={() => (this.droptipActive = !this.droptipActive)}
-        onBlur={() => (this.droptipActive = false)}
       >
         <div class="droptip-trigger">
           <div class="droptip-title">
