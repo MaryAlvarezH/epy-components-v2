@@ -81,7 +81,7 @@ export class EpySelect {
   onFilter(query: string) {
     this.query = query;
     if (this.options.length && query && query.length) {
-      this.query = this.query.toLowerCase();
+      query = query.toLowerCase();
       this.filteredOptions = this.options.filter(val => {
         let textValue = (typeof val === "string"
           ? val
