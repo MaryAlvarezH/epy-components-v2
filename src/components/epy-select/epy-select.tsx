@@ -32,7 +32,7 @@ export class EpySelect {
   @Prop() filter = false; // filters by label by default
   @Prop() notFoundCopy = "Nothing found";
   @Prop() leftIcon: string;
-  @Prop() rightIcon = "arrow arrow-open";
+  @Prop() rightIcon = "arrow";
 
   @State() isOpen = false;
   @Event() selectChange: EventEmitter;
@@ -66,7 +66,15 @@ export class EpySelect {
 
   loadPopper() {
     createPopper(this.trigger, this.content, {
-      placement: "bottom"
+      placement: "bottom-start",
+      modifiers: [
+        {
+          name: "preventOverflow",
+          options: {
+            mainAxis: false
+          }
+        }
+      ]
     });
   }
 
@@ -184,10 +192,10 @@ export class EpySelect {
             </div>
           ) : null}
 
-          {/* {this.loadPopper()} */}
+          {this.loadPopper()}
 
           <div class="select-trigger" onClick={() => this.setIsOpen()}>
-            {this.leftIcon ? <i class={this.leftIcon}></i> : null}
+            {this.leftIcon ? <i class={this.leftIcon + " left"}></i> : null}
             <div class="select-value">
               <slot>
                 <span class={this.textColor ? "text-" + this.textColor : ""}>
@@ -195,7 +203,7 @@ export class EpySelect {
                 </span>
               </slot>
             </div>
-            <span class={this.rightIcon}></span>
+            <span class={this.rightIcon + " right"}></span>
           </div>
           {this.renderOptions()}
         </div>

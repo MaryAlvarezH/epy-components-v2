@@ -18,7 +18,7 @@
 | `notFoundCopy`      | `not-found-copy`     |             | `string`                   | `"Nothing found"`    |
 | `options`           | --                   |             | `(string \| SelectItem)[]` | `[]`                 |
 | `placeholder`       | `placeholder`        |             | `string`                   | `"Select an option"` |
-| `rightIcon`         | `right-icon`         |             | `string`                   | `"arrow arrow-open"` |
+| `rightIcon`         | `right-icon`         |             | `string`                   | `"arrow"`            |
 | `textColor`         | `text-color`         |             | `string`                   | `undefined`          |
 | `value`             | `value`              |             | `any`                      | `undefined`          |
 
