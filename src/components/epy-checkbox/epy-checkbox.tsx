@@ -10,6 +10,7 @@ export class Checkbox {
 
   @Prop() label: string = "";
   @Prop({ mutable: true, reflect: true }) isChecked: boolean = false;
+  @Prop() disabled: boolean;
 
   @Event({
     eventName: "checkedEvent",
@@ -33,16 +34,17 @@ export class Checkbox {
       <form>
           <div class="flex-center-vertically">
             <input
-              class="message"
+              class={{"disabled": this.disabled}}
               type="checkbox"
+              disabled={this.disabled}
               checked={this.isChecked}
               ref={el => (this.checkboxInput = el as HTMLInputElement)}
               onChange={() =>
                 this.checkedChangeHandler(this.checkboxInput.checked)
               }
             />
-            <label htmlFor="checkbox">
-              <span></span>
+            <label htmlFor="checkbox" class={{"disabled": this.disabled}}>
+              <span class={{"disabled": this.disabled}}></span>
             </label>
             <span class="content-text-style">{this.label}</span>
           </div>
