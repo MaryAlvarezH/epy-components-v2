@@ -17,6 +17,10 @@ export namespace Components {
   interface EpyCard {
     'type': string;
   }
+  interface EpyCheckbox {
+    'isChecked': boolean;
+    'label': string;
+  }
   interface EpyDroptip {}
   interface EpyIcon {
     'icon': string;
@@ -65,6 +69,12 @@ declare global {
     new (): HTMLEpyCardElement;
   };
 
+  interface HTMLEpyCheckboxElement extends Components.EpyCheckbox, HTMLStencilElement {}
+  var HTMLEpyCheckboxElement: {
+    prototype: HTMLEpyCheckboxElement;
+    new (): HTMLEpyCheckboxElement;
+  };
+
   interface HTMLEpyDroptipElement extends Components.EpyDroptip, HTMLStencilElement {}
   var HTMLEpyDroptipElement: {
     prototype: HTMLEpyDroptipElement;
@@ -97,6 +107,7 @@ declare global {
   interface HTMLElementTagNameMap {
     'epy-button': HTMLEpyButtonElement;
     'epy-card': HTMLEpyCardElement;
+    'epy-checkbox': HTMLEpyCheckboxElement;
     'epy-droptip': HTMLEpyDroptipElement;
     'epy-icon': HTMLEpyIconElement;
     'epy-input': HTMLEpyInputElement;
@@ -113,6 +124,11 @@ declare namespace LocalJSX {
   }
   interface EpyCard {
     'type'?: string;
+  }
+  interface EpyCheckbox {
+    'isChecked'?: boolean;
+    'label'?: string;
+    'onCheckedEvent'?: (event: CustomEvent<any>) => void;
   }
   interface EpyDroptip {}
   interface EpyIcon {
@@ -150,6 +166,7 @@ declare namespace LocalJSX {
   interface IntrinsicElements {
     'epy-button': EpyButton;
     'epy-card': EpyCard;
+    'epy-checkbox': EpyCheckbox;
     'epy-droptip': EpyDroptip;
     'epy-icon': EpyIcon;
     'epy-input': EpyInput;
@@ -166,6 +183,7 @@ declare module "@stencil/core" {
     interface IntrinsicElements {
       'epy-button': LocalJSX.EpyButton & JSXBase.HTMLAttributes<HTMLEpyButtonElement>;
       'epy-card': LocalJSX.EpyCard & JSXBase.HTMLAttributes<HTMLEpyCardElement>;
+      'epy-checkbox': LocalJSX.EpyCheckbox & JSXBase.HTMLAttributes<HTMLEpyCheckboxElement>;
       'epy-droptip': LocalJSX.EpyDroptip & JSXBase.HTMLAttributes<HTMLEpyDroptipElement>;
       'epy-icon': LocalJSX.EpyIcon & JSXBase.HTMLAttributes<HTMLEpyIconElement>;
       'epy-input': LocalJSX.EpyInput & JSXBase.HTMLAttributes<HTMLEpyInputElement>;

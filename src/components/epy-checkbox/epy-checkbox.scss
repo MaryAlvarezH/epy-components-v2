@@ -1,0 +1,161 @@
+$base-color: #22b5b5;
+$second-color: #fff;
+
+.animated-checkbox {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.flex-center-vertically {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.content-text-style {
+  font-size: 13px;
+  margin-top: 5px;
+  font-weight: 600;
+}
+
+label {
+  cursor: pointer;
+  color: $base-color;
+  position: relative; 
+  display: inline-block;
+
+  span {
+    border-radius: 4px;
+    width: 15px;
+    height: 15px;
+    margin-right: 10px;
+    position: relative;
+    box-sizing: initial;
+    vertical-align: -6px;
+    display: inline-block;
+    transform-origin: center;
+    background-color: transparent;
+    border: 2px solid $base-color;
+    transition: background-color 150ms 200ms,
+      transform 350ms cubic-bezier(0.78, -1.22, 0.17, 1.89); 
+
+    &:before {
+      content: "";
+      width: 0px;
+      height: 2px;
+      position: absolute;
+      background: $base-color;
+      transform-origin: 0% 0%;
+      transform: rotate(45deg);
+      transition: width 50ms ease 50ms;
+      left: 4px; 
+      top: 8px; 
+    }
+
+    &:after {
+      content: "";
+      width: 0;
+      height: 2px;
+      position: absolute;
+      transform-origin: 0% 0%;
+      background: $base-color;
+      transform: rotate(305deg);
+      transition: width 50ms ease;
+      left:5px; 
+      top: 12px; 
+    }
+  }
+
+  // Time to add some life to it
+  &:hover {
+    span {
+      &:before {
+        width: 5px;
+        transition: width 100ms ease;
+      }
+
+      &:after {
+        width: 10px;
+        transition: width 150ms ease 100ms;
+      }
+    }
+  }
+}
+
+input[type="checkbox"] {
+  opacity: 0;
+  z-index: 10;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  margin-top: -1px;
+  position: relative;
+  margin-right: -36px;
+  transform-origin: center;
+  background-color: transparent;
+
+  &:before {
+    content: "";
+    width: 0px;
+    height: 2px;
+    position: absolute;
+    background: $base-color;
+    transform-origin: 0% 0%;
+    transform: rotate(45deg);
+    transition: width 50ms ease 50ms;
+    left: 4px; 
+    top: 8px; 
+  }
+
+  &:after {
+    content: "";
+    width: 0;
+    height: 2px;
+    position: absolute;
+    transform-origin: 0% 0%;
+    background: $base-color;
+    transform: rotate(305deg);
+    transition: width 50ms ease;
+    left: 5px; 
+    top: 12px; 
+  }
+
+  &:checked {
+    + label {
+      span {
+        background-color: $base-color;
+        &:after {
+          width: 10px;
+          background: $second-color;
+          transition: width 150ms ease 100ms; 
+        }
+
+        &:before {
+          width: 5px;
+          background: $second-color;
+          transition: width 150ms ease 100ms; 
+        }
+      }
+
+      &:hover {
+        span {
+          background-color: $base-color;
+          &:after {
+            width: 10px;
+            background: $second-color;
+            transition: width 150ms ease 100ms; 
+          }
+
+          &:before {
+            width: 5px;
+            background: $second-color;
+            transition: width 150ms ease 100ms; 
+          }
+        }
+      }
+    }
+  }
+}
