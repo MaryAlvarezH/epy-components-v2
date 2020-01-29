@@ -19,7 +19,9 @@ export namespace Components {
   interface EpyCard {
     'type': string;
   }
-  interface EpyDroptip {}
+  interface EpyDroptip {
+    'contentBgColor': string;
+  }
   interface EpyIcon {
     'icon': string;
   }
@@ -149,7 +151,9 @@ declare namespace LocalJSX {
   interface EpyCard {
     'type'?: string;
   }
-  interface EpyDroptip {}
+  interface EpyDroptip {
+    'contentBgColor'?: string;
+  }
   interface EpyIcon {
     'icon'?: string;
   }

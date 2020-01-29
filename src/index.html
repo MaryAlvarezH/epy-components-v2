@@ -13,7 +13,7 @@
     />
     <link
       rel="stylesheet"
-      href="https://storage.googleapis.com/assets-front/css/epy-0-0-6.min.css"
+      href="https://storage.googleapis.com/assets-front/css/epy-0-0-7.min.css"
     />
 
     <script type="module" src="/build/epy-components.esm.js"></script>
@@ -339,12 +339,11 @@
   </div>
 
   <!-- Droptip -->
-  <div class="row">
+  <div class="epy-row">
     <h4>Droptip</h4>
     <div class="col-4">
       <epy-droptip>
-        <span slot="title">This is a droptip</span>
-        <div slot="content">
+        <span slot="trigger">This is a droptip</span>
           <div class="epy-row">
             <div class="col-6">
               This is a slot called "content"
@@ -353,10 +352,21 @@
                 You can custom it as you want
               </div>
           </div>
-
-        </div>
       </epy-droptip>
+    </div>
 
+    <div class="col-4">
+      <epy-droptip content-bg-color="#22b5b5">
+        <span slot="trigger">This is a droptip</span>
+          <div class="epy-row">
+            <div class="col-6">
+              This is a slot called "content"
+            </div>
+            <div class="col-6">
+                You can custom it as you want
+              </div>
+          </div>
+      </epy-droptip>
     </div>
   </div>
 
