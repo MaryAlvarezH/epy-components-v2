@@ -13,6 +13,7 @@ import { createPopper } from "@popperjs/core";
 export interface SelectItem {
   label: string;
   value: any;
+  selected?: boolean;
 }
 
 @Component({
@@ -37,10 +38,13 @@ export class EpySelect {
   @State() isOpen = false;
   @Event() selectChange: EventEmitter;
   @Element() el: HTMLElement;
-  @State() filteredOptions: Array<string | SelectItem> = null;
+  @State() filteredOptions: Array<SelectItem> = null;
 
+  vOptions: Array<SelectItem>; // These are the mutable options used internally
+  filterSlot: HTMLElement;
   selectEl!: HTMLElement;
   query = "";
+  selectedIndex: number;
 
   //popper
   private trigger: HTMLElement;
@@ -57,6 +61,11 @@ export class EpySelect {
 
   componentWillLoad() {
     this.filteredOptions = null;
+    this.filterSlot = this.el.querySelector('[slot="filter"]');
+    // transform string array to SelectItem array options
+    this.vOptions = this.options.map(o => {
+      return typeof o === 'string' ? { value: o, label: o } : o;
+    })
   }
 
   componentDidLoad() {
@@ -78,9 +87,9 @@ export class EpySelect {
     });
   }
 
-  select(option: string | SelectItem) {
-    console.log({ option });
+  select(option: string | SelectItem, index: number) {
     this.value = option;
+    this.selectedIndex = index;
     this.setIsOpen(false);
     this.query = "";
     this.filteredOptions = null;
@@ -104,49 +113,50 @@ export class EpySelect {
 
   onFilter(query: string) {
     this.query = query;
-    if (this.options.length && query && query.length) {
+    if (this.vOptions.length && query && query.length) {
       query = query.toLowerCase();
-      this.filteredOptions = this.options.filter(val => {
-        let textValue = (typeof val === "string"
-          ? val
-          : val.label
-        ).toLowerCase();
-        return textValue.indexOf(query) > -1;
+      let filtOpts = [];
+      this.vOptions.map((val, i) => {
+        let textValue = val.label.toLowerCase();
+        if (textValue.indexOf(query) > -1) {
+          val.selected = this.selectedIndex === i;
+          filtOpts.push(val)
+        }
       });
+      this.filteredOptions = filtOpts;
     } else {
       this.filteredOptions = null;
     }
   }
 
   renderOptions() {
-    console.log("options:", this.options);
-    let showOpts = this.filteredOptions ? this.filteredOptions : this.options;
+    let showOpts = this.filteredOptions ? this.filteredOptions : this.vOptions,
+    isLessLength = showOpts.length < this.vOptions.length;
     if (this.filter) {
+      // TODO: keyboard accesibility (search and then arrow down + enter = selection )
       return (
-        <div class="select-details" role="tooltip">
-          <epy-input
-            type="input-outline"
-            value={this.query}
-            onEpychange={e => this.onFilter(e.detail)}
-            input-type="text"
-            placeholder={this.filterPlaceholder}
-          >
-            <i slot="content-left" class="epy-icon-search-v1 left"></i>
-          </epy-input>
+        <div class="select-details">
+          <slot name="filter">
+            <epy-input
+              type="input-outline"
+              value={this.query}
+              onEpychange={e => this.onFilter(e.detail)}
+              input-type="text"
+              placeholder={this.filterPlaceholder}
+            >
+              <i slot="content-left" class="epy-icon-search-v1 left"></i>
+            </epy-input>
+          </slot>
           <div class="options-container">
             {showOpts.length ? (
-              showOpts.map(o => (
-                <slot name="option">
-                  <span class="option" onClick={() => this.select(o)}>
-                    {typeof o === "string" ? o : o.label}
-                  </span>
-                </slot>
-              ))
+              showOpts.map((o: any, i: number) =>
+                <span class={(isLessLength ? o.selected : (this.selectedIndex === i)) ? 'option selected' : 'option'} onClick={() => this.select(o, i)}>
+                  {typeof o === "string" ? o : o.label}
+                </span>
+              )
             ) : (
-              <slot name="option">
                 <p class="text-suggest">{this.notFoundCopy}</p>
-              </slot>
-            )}
+              )}
           </div>
         </div>
       );
@@ -154,13 +164,16 @@ export class EpySelect {
       return (
         <div class="select-details" role="tooltip">
           <div class="options-container">
-            {this.options.map(o => (
-              <slot name="option">
-                <span class="option" onClick={() => this.select(o)}>
-                  {typeof o === "string" ? o : o.label}
-                </span>
-              </slot>
-            ))}
+            {
+              this.vOptions.map((o: any, i: number) => {
+                let optclass = (this.selectedIndex === i) ? 'option selected' : 'option';
+                return (
+                  <span class={optclass} onClick={() => this.select(o, i)}>
+                    {typeof o === "string" ? o : o.label}
+                  </span>
+                )
+              })
+            }
           </div>
         </div>
       );
