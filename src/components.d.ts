@@ -20,6 +20,7 @@ export namespace Components {
     'type': string;
   }
   interface EpyCheckbox {
+    'disabled': boolean;
     'isChecked': boolean;
     'label': string;
   }
@@ -176,6 +177,7 @@ declare namespace LocalJSX {
     'type'?: string;
   }
   interface EpyCheckbox {
+    'disabled'?: boolean;
     'isChecked'?: boolean;
     'label'?: string;
     'onCheckedEvent'?: (event: CustomEvent<any>) => void;

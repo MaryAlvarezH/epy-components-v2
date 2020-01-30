@@ -1,14 +1,5 @@
-$base-color: #22b5b5;
+$base-color: #26c580;
 $second-color: #fff;
-
-.animated-checkbox {
-  width: 100%;
-  height: 100%;
-  text-align: center;
-  display: table-cell;
-  vertical-align: middle;
-}
-
 .flex-center-vertically {
   display: flex;
   flex-direction: row;
@@ -16,146 +7,129 @@ $second-color: #fff;
 }
 
 .content-text-style {
-  font-size: 13px;
-  margin-top: 5px;
-  font-weight: 600;
+  font-size: 16px;
+  margin-top: 3px;
 }
 
 label {
-  cursor: pointer;
   color: $base-color;
-  position: relative;
+  cursor: pointer;
   display: inline-block;
-
+  margin-right: 8px;
+  position: relative;
+  width: 18px;
   span {
-    border-radius: 4px;
-    width: 15px;
-    height: 15px;
-    margin-right: 10px;
-    position: relative;
-    box-sizing: initial;
-    vertical-align: -6px;
-    display: inline-block;
-    transform-origin: center;
     background-color: transparent;
-    border: 2px solid $base-color;
+    border: 1px solid #cecece !important;
+    border-radius: 4px;
+    box-sizing: initial;
+    display: inline-block;
+    height: 15px;
+    margin-right: 8px;
+    position: relative;
+    transform-origin: center;
     transition: background-color 150ms 200ms,
       transform 350ms cubic-bezier(0.78, -1.22, 0.17, 1.89);
-
+    vertical-align: -6px;
+    width: 15px;
     &:before {
+      background: $base-color;
       content: "";
-      width: 0px;
       height: 2px;
       position: absolute;
-      background: $base-color;
+      top: 8px;
       transform-origin: 0% 0%;
       transform: rotate(45deg);
       transition: width 50ms ease 50ms;
       left: 4px;
-      top: 8px;
+      width: 0px;
     }
 
     &:after {
-      content: "";
-      width: 0;
-      height: 2px;
-      position: absolute;
-      transform-origin: 0% 0%;
       background: $base-color;
+      content: "";
+      height: 2px;
+      left: 5px;
+      position: absolute;
+      top: 12px;
+      transform-origin: 0% 0%;
       transform: rotate(305deg);
       transition: width 50ms ease;
-      left: 5px;
-      top: 12px;
+      width: 0;
+    }
+
+    &.disabled {
+      background: #c7c7c7;
+      cursor: text !important;
+      pointer-events: none !important;
     }
   }
-
-  // Time to add some life to it
-  &:hover {
-    span {
-      &:before {
-        width: 5px;
-        transition: width 100ms ease;
-      }
-
-      &:after {
-        width: 10px;
-        transition: width 150ms ease 100ms;
-      }
-    }
+  &.disabled {
+    cursor: default !important;
+    pointer-events: none !important;
   }
 }
 
 input[type="checkbox"] {
-  opacity: 0;
-  z-index: 10;
-  width: 30px;
-  height: 30px;
-  cursor: pointer;
-  margin-top: -1px;
-  position: relative;
-  margin-right: -36px;
-  transform-origin: center;
   background-color: transparent;
-
+  cursor: pointer;
+  height: 17px;
+  margin-right: -17px;
+  margin-top: 3px;
+  opacity: 0;
+  position: relative;
+  transform-origin: center;
+  -webkit-transform-origin: center;
+  width: 17px;
+  z-index: 10;
   &:before {
-    content: "";
-    width: 0px;
-    height: 2px;
-    position: absolute;
     background: $base-color;
+    content: "";
+    height: 2px;
+    left: 4px;
+    position: absolute;
+    top: 8px;
     transform-origin: 0% 0%;
     transform: rotate(45deg);
     transition: width 50ms ease 50ms;
-    left: 4px;
-    top: 8px;
+    width: 0px;
   }
 
   &:after {
-    content: "";
-    width: 0;
-    height: 2px;
-    position: absolute;
-    transform-origin: 0% 0%;
     background: $base-color;
+    content: "";
+    height: 2px;
+    left: 5px;
+    position: absolute;
+    top: 12px;
+    transform-origin: 0% 0%;
     transform: rotate(305deg);
     transition: width 50ms ease;
-    left: 5px;
-    top: 12px;
+    width: 0;
   }
 
   &:checked {
     + label {
       span {
         background-color: $base-color;
+        border: 1px solid #26c580 !important;
         &:after {
-          width: 10px;
           background: $second-color;
           transition: width 150ms ease 100ms;
+          width: 10px;
         }
 
         &:before {
-          width: 5px;
           background: $second-color;
           transition: width 150ms ease 100ms;
-        }
-      }
-
-      &:hover {
-        span {
-          background-color: $base-color;
-          &:after {
-            width: 10px;
-            background: $second-color;
-            transition: width 150ms ease 100ms;
-          }
-
-          &:before {
-            width: 5px;
-            background: $second-color;
-            transition: width 150ms ease 100ms;
-          }
+          width: 5px;
         }
       }
     }
+  }
+
+  &.disabled {
+    cursor: default !important;
+    pointer-events: none !important;
   }
 }
