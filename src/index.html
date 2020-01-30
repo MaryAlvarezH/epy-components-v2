@@ -13,7 +13,7 @@
     />
     <link
       rel="stylesheet"
-      href="https://storage.googleapis.com/assets-front/css/epy-0-0-12.min.css"
+      href="https://storage.googleapis.com/assets-front/css/epy-0-0-13.min.css"
     />
 
     <script type="module" src="/build/epy-components.esm.js"></script>
@@ -537,14 +537,16 @@
     </div>
 
     <epy-checkbox label="option"></epy-checkbox>
+    <epy-checkbox label="option2" checked></epy-checkbox>
 
     <h3>First group</h3>
     <div class="epy-row">
       <div class="col-3">
-        <epy-radio name="first" label="option 1" value="1"></epy-radio>
+        <epy-radio name="first" label="option 1" value="1"  ></epy-radio>
         <epy-radio name="first" label="option 2" value="2"></epy-radio>
         <epy-radio name="first" label="option 3" value="3"></epy-radio>
-        <epy-radio name="first" label="option 4" value="4" disabled></epy-radio>
+        <epy-radio name="first" label="option 4" value="4" checked></epy-radio>
+        <epy-radio name="first" label="option 5" value="5" disabled></epy-radio>
       </div>
     </div>
   
@@ -571,7 +573,15 @@
     const pwcCheckboxes = document.querySelectorAll("epy-checkbox");
     pwcCheckboxes.forEach(element => {
       element.addEventListener("checkedEvent", event => {
-        console.log("Event: ", event.detail);
+        // console.log("Event: ", event.detail);
+      });
+    });
+
+    // Radio buttons 
+    const pwcRadio = document.querySelectorAll("epy-radio");
+    pwcRadio.forEach(element => {
+      element.addEventListener("valueChanges", event => {
+        console.log("Event js: ", event.detail);
       });
     });
   </script>

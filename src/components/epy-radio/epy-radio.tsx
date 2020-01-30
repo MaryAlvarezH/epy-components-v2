@@ -11,31 +11,33 @@ export class Radio {
   @Prop() value: any;
   @Prop() disabled: boolean = false;
   @Prop() label: string;
+  @Prop({ mutable: true, reflect: true }) checked: boolean = false;
 
-  @Event() valueChange: EventEmitter;
+  @Event() valueChanges: EventEmitter;
+  radioInput: HTMLInputElement;
 
   handleValueChange(value) {
-    this.valueChange.emit(value);
+    this.valueChanges.emit(value);
+    console.log("check radio", value);
   }
 
   render() {
     return (
       <div class="radio">
-        {!this.disabled ? (
-          <input
-            type="radio"
-            name={this.name}
-            value={this.value}
-            onChange={() => this.handleValueChange(this.value)}
-          />
-        ) : (
-          <input type="radio" name={this.name} value={this.value} disabled />
-        )}
+        <input
+          type="radio"
+          name={this.name}
+          value={this.value}
+          onChange={() => this.handleValueChange(this.radioInput.value)}
+          checked={this.checked}
+          ref={el => (this.radioInput = el as HTMLInputElement)}
+          disabled={this.disabled}
+        />
 
         <label htmlFor="radio">
           <span></span>
         </label>
-        <span class="content-text-style">{this.label}</span>
+        <span>{this.label}</span>
       </div>
     );
   }

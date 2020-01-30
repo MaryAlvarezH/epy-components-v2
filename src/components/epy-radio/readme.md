@@ -9,6 +9,7 @@
 
 | Property   | Attribute  | Description | Type      | Default     |
 | ---------- | ---------- | ----------- | --------- | ----------- |
+| `checked`  | `checked`  |             | `boolean` | `false`     |
 | `disabled` | `disabled` |             | `boolean` | `false`     |
 | `label`    | `label`    |             | `string`  | `undefined` |
 | `name`     | `name`     |             | `string`  | `undefined` |
@@ -17,9 +18,9 @@
 
 ## Events
 
-| Event         | Description | Type               |
-| ------------- | ----------- | ------------------ |
-| `valueChange` |             | `CustomEvent<any>` |
+| Event          | Description | Type               |
+| -------------- | ----------- | ------------------ |
+| `valueChanges` |             | `CustomEvent<any>` |
 
 
 ----------------------------------------------

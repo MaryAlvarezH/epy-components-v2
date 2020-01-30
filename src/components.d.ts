@@ -58,6 +58,7 @@ export namespace Components {
     'width': string;
   }
   interface EpyRadio {
+    'checked': boolean;
     'disabled': boolean;
     'label': string;
     'name': string;
@@ -217,10 +218,11 @@ declare namespace LocalJSX {
     'width'?: string;
   }
   interface EpyRadio {
+    'checked'?: boolean;
     'disabled'?: boolean;
     'label'?: string;
     'name'?: string;
-    'onValueChange'?: (event: CustomEvent<any>) => void;
+    'onValueChanges'?: (event: CustomEvent<any>) => void;
     'value'?: any;
   }
   interface EpySelect {
