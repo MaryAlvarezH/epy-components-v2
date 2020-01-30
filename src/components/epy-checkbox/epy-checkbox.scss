@@ -24,7 +24,7 @@ $second-color: #fff;
 label {
   cursor: pointer;
   color: $base-color;
-  position: relative; 
+  position: relative;
   display: inline-block;
 
   span {
@@ -40,7 +40,7 @@ label {
     background-color: transparent;
     border: 2px solid $base-color;
     transition: background-color 150ms 200ms,
-      transform 350ms cubic-bezier(0.78, -1.22, 0.17, 1.89); 
+      transform 350ms cubic-bezier(0.78, -1.22, 0.17, 1.89);
 
     &:before {
       content: "";
@@ -51,8 +51,8 @@ label {
       transform-origin: 0% 0%;
       transform: rotate(45deg);
       transition: width 50ms ease 50ms;
-      left: 4px; 
-      top: 8px; 
+      left: 4px;
+      top: 8px;
     }
 
     &:after {
@@ -64,8 +64,8 @@ label {
       background: $base-color;
       transform: rotate(305deg);
       transition: width 50ms ease;
-      left:5px; 
-      top: 12px; 
+      left: 5px;
+      top: 12px;
     }
   }
 
@@ -106,8 +106,8 @@ input[type="checkbox"] {
     transform-origin: 0% 0%;
     transform: rotate(45deg);
     transition: width 50ms ease 50ms;
-    left: 4px; 
-    top: 8px; 
+    left: 4px;
+    top: 8px;
   }
 
   &:after {
@@ -119,8 +119,8 @@ input[type="checkbox"] {
     background: $base-color;
     transform: rotate(305deg);
     transition: width 50ms ease;
-    left: 5px; 
-    top: 12px; 
+    left: 5px;
+    top: 12px;
   }
 
   &:checked {
@@ -130,13 +130,13 @@ input[type="checkbox"] {
         &:after {
           width: 10px;
           background: $second-color;
-          transition: width 150ms ease 100ms; 
+          transition: width 150ms ease 100ms;
         }
 
         &:before {
           width: 5px;
           background: $second-color;
-          transition: width 150ms ease 100ms; 
+          transition: width 150ms ease 100ms;
         }
       }
 
@@ -146,13 +146,13 @@ input[type="checkbox"] {
           &:after {
             width: 10px;
             background: $second-color;
-            transition: width 150ms ease 100ms; 
+            transition: width 150ms ease 100ms;
           }
 
           &:before {
             width: 5px;
             background: $second-color;
-            transition: width 150ms ease 100ms; 
+            transition: width 150ms ease 100ms;
           }
         }
       }

@@ -23,7 +23,6 @@ export namespace Components {
     'isChecked': boolean;
     'label': string;
   }
-  interface EpyDroptip {}
   interface EpyDroptip {
     'contentBgColor': string;
   }
@@ -56,6 +55,12 @@ export namespace Components {
     'skidding': number;
     'triggerEvent': string;
     'width': string;
+  }
+  interface EpyRadio {
+    'disabled': boolean;
+    'label': string;
+    'name': string;
+    'value': any;
   }
   interface EpySelect {
     'epyClass': string;
@@ -129,6 +134,12 @@ declare global {
     new (): HTMLEpyPopoverElement;
   };
 
+  interface HTMLEpyRadioElement extends Components.EpyRadio, HTMLStencilElement {}
+  var HTMLEpyRadioElement: {
+    prototype: HTMLEpyRadioElement;
+    new (): HTMLEpyRadioElement;
+  };
+
   interface HTMLEpySelectElement extends Components.EpySelect, HTMLStencilElement {}
   var HTMLEpySelectElement: {
     prototype: HTMLEpySelectElement;
@@ -149,6 +160,7 @@ declare global {
     'epy-input': HTMLEpyInputElement;
     'epy-loader': HTMLEpyLoaderElement;
     'epy-popover': HTMLEpyPopoverElement;
+    'epy-radio': HTMLEpyRadioElement;
     'epy-select': HTMLEpySelectElement;
     'epy-tooltip': HTMLEpyTooltipElement;
   }
@@ -168,7 +180,6 @@ declare namespace LocalJSX {
     'label'?: string;
     'onCheckedEvent'?: (event: CustomEvent<any>) => void;
   }
-  interface EpyDroptip {}
   interface EpyDroptip {
     'contentBgColor'?: string;
   }
@@ -203,6 +214,13 @@ declare namespace LocalJSX {
     'triggerEvent'?: string;
     'width'?: string;
   }
+  interface EpyRadio {
+    'disabled'?: boolean;
+    'label'?: string;
+    'name'?: string;
+    'onValueChange'?: (event: CustomEvent<any>) => void;
+    'value'?: any;
+  }
   interface EpySelect {
     'epyClass'?: string;
     'filter'?: boolean;
@@ -233,6 +251,7 @@ declare namespace LocalJSX {
     'epy-input': EpyInput;
     'epy-loader': EpyLoader;
     'epy-popover': EpyPopover;
+    'epy-radio': EpyRadio;
     'epy-select': EpySelect;
     'epy-tooltip': EpyTooltip;
   }
@@ -252,6 +271,7 @@ declare module "@stencil/core" {
       'epy-input': LocalJSX.EpyInput & JSXBase.HTMLAttributes<HTMLEpyInputElement>;
       'epy-loader': LocalJSX.EpyLoader & JSXBase.HTMLAttributes<HTMLEpyLoaderElement>;
       'epy-popover': LocalJSX.EpyPopover & JSXBase.HTMLAttributes<HTMLEpyPopoverElement>;
+      'epy-radio': LocalJSX.EpyRadio & JSXBase.HTMLAttributes<HTMLEpyRadioElement>;
       'epy-select': LocalJSX.EpySelect & JSXBase.HTMLAttributes<HTMLEpySelectElement>;
       'epy-tooltip': LocalJSX.EpyTooltip & JSXBase.HTMLAttributes<HTMLEpyTooltipElement>;
     }
