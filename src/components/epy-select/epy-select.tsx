@@ -6,7 +6,8 @@ import {
   h,
   EventEmitter,
   State,
-  Listen
+  Listen,
+  Watch
 } from "@stencil/core";
 import { createPopper } from "@popperjs/core";
 
@@ -14,6 +15,8 @@ export interface SelectItem {
   label: string;
   value: any;
   selected?: boolean;
+  highlight?: boolean; // this is for styling keyboard option highlighting.
+  index?: number; // 1:1 relation index for options and vOptions to manage state on filtering.
 }
 
 @Component({
@@ -41,31 +44,120 @@ export class EpySelect {
   @State() filteredOptions: Array<SelectItem> = null;
 
   vOptions: Array<SelectItem>; // These are the mutable options used internally
-  filterSlot: HTMLElement;
+  // filterSlot: HTMLElement;
   selectEl!: HTMLElement;
   query = "";
   selectedIndex: number;
+  optionsElems: HTMLCollectionOf<Element>;
 
-  //popper
+  // this is for styling keyboard option highlighting
+  @State() private _highlightIndex: number = -1;
+  set highlightIndex(v) {
+    if (v >= -1 && (this.vOptions && v < this.vOptions.length))
+      this._highlightIndex = v;
+  }
+  get highlightIndex() { return this._highlightIndex }
+
+  // index to manage iteration when arrows are pressed and there are filtered options 
+  private _navigateIndex = -1;
+  set navigateIndex(v) {
+    if (v >= -1 && (this.vOptions && v < (this.filteredOptions ? this.filteredOptions.length : this.vOptions.length)))
+      this._navigateIndex = v;
+  }
+  get navigateIndex() { return this._navigateIndex }
+  
+  // resets the highlighting
+  reseNavigationIndexes(){
+    if (this.vOptions[this.highlightIndex]) {
+      this.vOptions[this.highlightIndex].highlight = false;
+      this.highlightIndex = -1;
+    }
+    if (this.vOptions[this.navigateIndex]) {
+      this.vOptions[this.navigateIndex].highlight = false;
+      this.navigateIndex = -1;
+    }
+  }
+
+
+  // Popper 
   private trigger: HTMLElement;
   private content: HTMLElement;
+
+  @Watch('options')// transform string array to SelectItem array options
+  passOptions(newOptionsValue) {
+    this.vOptions = this.options.map((o, i) => {
+      if (typeof o === 'string') {
+        return { value: o, label: o, index: i }
+      } else {
+        o.index = i;
+        return o;
+      };
+    })
+    this.optionsElems = this.el.getElementsByClassName('option');
+  }
 
   @Listen("mousedown", { target: "window" })
   closeOnOutsideClick(e) {
     if (!this.el.contains(e.target)) {
+      this.reseNavigationIndexes()
       this.setIsOpen(false);
       this.query = "";
       this.filteredOptions = null;
     }
   }
 
+  @Listen("keydown", { target: "parent" })
+  navigateOptions(event) {
+    if (!this.isOpen)
+      return
+    // Check for up/down key presses
+    let opts = this.filteredOptions ? this.filteredOptions : this.vOptions
+    switch (event.keyCode) {
+      case 38: // Up arrow    
+        // Remove the highlighting from the previous element
+        if (this.navigateIndex > -1)
+          opts[this.navigateIndex].highlight = false;
+        --this.navigateIndex; // Decrease the counter
+        if (opts[this.navigateIndex]) { // Highlight the new element
+          opts[this.navigateIndex].highlight = true;
+          this.highlightIndex = opts[this.navigateIndex].index;
+        }
+        break;
+      case 40: // Down arrow
+        if (this.navigateIndex > -1)
+          opts[this.navigateIndex].highlight = false; // Remove the highlighting from the previous element
+        ++this.navigateIndex; // Increase counter 
+        console.log('indexes:', this.highlightIndex, this.navigateIndex);
+        if (opts[this.navigateIndex]) { // Highlight the new element
+          opts[this.navigateIndex].highlight = true;
+          this.highlightIndex = opts[this.navigateIndex].index;
+        }
+        break;
+      case 13:
+        this.select(this.vOptions[this.highlightIndex]);
+        break;
+    }
+    if (this.highlightIndex > -1) { // Show option if it is not visible
+      if (this.optionsElems[this.highlightIndex])
+        this.optionsElems[this.highlightIndex].scrollIntoView();
+      console.log(this.optionsElems[this.highlightIndex]);
+    }
+    console.log('indexes:', this.highlightIndex, this.navigateIndex);
+
+  }
+
   componentWillLoad() {
     this.filteredOptions = null;
-    this.filterSlot = this.el.querySelector('[slot="filter"]');
-    // transform string array to SelectItem array options
-    this.vOptions = this.options.map(o => {
-      return typeof o === 'string' ? { value: o, label: o } : o;
+    // this.filterSlot = this.el.querySelector('[slot="filter"]'); //TODO: test filter slot  
+    this.vOptions = this.options.map((o, i) => {
+      if (typeof o === 'string') {
+        return { value: o, label: o, index: i }
+      } else {
+        o.index = i;
+        return o;
+      };
     })
+    this.optionsElems = this.el.getElementsByClassName('option');
   }
 
   componentDidLoad() {
@@ -87,13 +179,18 @@ export class EpySelect {
     });
   }
 
-  select(option: string | SelectItem, index: number) {
+  select(option: SelectItem) {
     this.value = option;
-    this.selectedIndex = index;
+    if (!isNaN(this.selectedIndex)) {
+      this.vOptions[this.selectedIndex].selected = false; //remove previously selected flag
+    }
+    option.selected = true;
+    this.selectedIndex = option.index;
     this.setIsOpen(false);
     this.query = "";
     this.filteredOptions = null;
-    this.selectChange.emit(typeof option === "string" ? option : option.value);
+    this.reseNavigationIndexes();
+    this.selectChange.emit(option.value);
   }
 
   setIsOpen(value?: boolean) {
@@ -101,6 +198,7 @@ export class EpySelect {
     this.isOpen
       ? this.selectEl.classList.add("active")
       : this.selectEl.classList.remove("active");
+    this.highlightIndex = -1;
   }
 
   printValue() {
@@ -113,13 +211,14 @@ export class EpySelect {
 
   onFilter(query: string) {
     this.query = query;
+    this.reseNavigationIndexes();
     if (this.vOptions.length && query && query.length) {
       query = query.toLowerCase();
       let filtOpts = [];
       this.vOptions.map((val, i) => {
         let textValue = val.label.toLowerCase();
         if (textValue.indexOf(query) > -1) {
-          val.selected = this.selectedIndex === i;
+          // val.selected = this.selectedIndex === i;
           filtOpts.push(val)
         }
       });
@@ -130,27 +229,26 @@ export class EpySelect {
   }
 
   renderOptions() {
-    let showOpts = this.filteredOptions ? this.filteredOptions : this.vOptions,
-    isLessLength = showOpts.length < this.vOptions.length;
+    let showOpts = this.filteredOptions ? this.filteredOptions : this.vOptions;
     if (this.filter) {
       // TODO: keyboard accesibility (search and then arrow down + enter = selection )
       return (
         <div class="select-details">
-          <slot name="filter">
-            <epy-input
-              type="input-outline"
-              value={this.query}
-              onEpychange={e => this.onFilter(e.detail)}
-              input-type="text"
-              placeholder={this.filterPlaceholder}
-            >
-              <i slot="content-left" class="epy-icon-search-v1 left"></i>
-            </epy-input>
-          </slot>
+          {/* <slot name="filter"> */}
+          <epy-input
+            type="input-outline"
+            value={this.query}
+            onEpychange={e => this.onFilter(e.detail)}
+            input-type="text"
+            placeholder={this.filterPlaceholder}
+          >
+            <i slot="content-left" class="epy-icon-search-v1 left"></i>
+          </epy-input>
+          {/* </slot> */}
           <div class="options-container">
             {showOpts.length ? (
               showOpts.map((o: any, i: number) =>
-                <span class={(isLessLength ? o.selected : (this.selectedIndex === i)) ? 'option selected' : 'option'} onClick={() => this.select(o, i)}>
+                <span class={`option ${o.selected ? 'selected' : ''} ${o.highlight ? 'highlight' : ''}`} onClick={() => this.select(o)}>
                   {typeof o === "string" ? o : o.label}
                 </span>
               )
@@ -166,9 +264,8 @@ export class EpySelect {
           <div class="options-container">
             {
               this.vOptions.map((o: any, i: number) => {
-                let optclass = (this.selectedIndex === i) ? 'option selected' : 'option';
                 return (
-                  <span class={optclass} onClick={() => this.select(o, i)}>
+                  <span class={`option ${o.selected ? 'selected' : ''} ${o.highlight ? 'highlight' : ''}`} onClick={() => this.select(o)}>
                     {typeof o === "string" ? o : o.label}
                   </span>
                 )
