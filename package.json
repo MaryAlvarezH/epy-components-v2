@@ -1,6 +1,6 @@
 {
   "name": "epy-components",
-  "version": "0.0.31",
+  "version": "0.0.41",
   "description": "Entropy WebComponents",
   "main": "dist/index.js",
   "module": "dist/index.mjs",

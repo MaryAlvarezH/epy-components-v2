@@ -1,8 +1,8 @@
 import { Component, Prop, h, Event, EventEmitter } from "@stencil/core";
 
 @Component({
-  tag: 'epy-checkbox',
-  styleUrl: 'epy-checkbox.scss',
+  tag: "epy-checkbox",
+  styleUrl: "epy-checkbox.scss",
   shadow: true
 })
 export class Checkbox {
@@ -10,6 +10,7 @@ export class Checkbox {
 
   @Prop() label: string = "";
   @Prop({ mutable: true, reflect: true }) isChecked: boolean = false;
+  @Prop() disabled: boolean;
 
   @Event({
     eventName: "checkedEvent",
@@ -20,7 +21,7 @@ export class Checkbox {
   checkedChangeEmitter: EventEmitter;
 
   checkedChangeHandler(checked: boolean) {
-    console.log('click');
+    console.log("click");
     this.checkedChangeEmitter.emit({ checked });
   }
 
@@ -31,22 +32,23 @@ export class Checkbox {
   render() {
     return (
       <form>
-          <div class="flex-center-vertically">
-            <input
-              class="message"
-              type="checkbox"
-              checked={this.isChecked}
-              ref={el => (this.checkboxInput = el as HTMLInputElement)}
-              onChange={() =>
-                this.checkedChangeHandler(this.checkboxInput.checked)
-              }
-            />
-            <label htmlFor="checkbox">
-              <span></span>
-            </label>
-            <span class="content-text-style">{this.label}</span>
-          </div>
-        </form>
+        <div class="flex-center-vertically">
+          <input
+            class={{ disabled: this.disabled }}
+            type="checkbox"
+            disabled={this.disabled}
+            checked={this.isChecked}
+            ref={el => (this.checkboxInput = el as HTMLInputElement)}
+            onChange={() =>
+              this.checkedChangeHandler(this.checkboxInput.checked)
+            }
+          />
+          <label htmlFor="checkbox" class={{ disabled: this.disabled }}>
+            <span class={{ disabled: this.disabled }}></span>
+          </label>
+          <span class="content-text-style">{this.label}</span>
+        </div>
+      </form>
     );
   }
 }

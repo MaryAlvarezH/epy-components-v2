@@ -13,7 +13,7 @@
     />
     <link
       rel="stylesheet"
-      href="https://storage.googleapis.com/assets-front/css/epy-0-0-10.min.css"
+      href="https://storage.googleapis.com/assets-front/css/epy-0-0-14.min.css"
     />
 
     <script type="module" src="/build/epy-components.esm.js"></script>
@@ -24,6 +24,14 @@
   <!-- Button -->
   <div class="epy-row">
     <h4>epy-button</h4>
+    <div class="col-3">
+      <epy-checkbox label="Hola" disabled="true">
+      </epy-checkbox>
+    </div>
+    <div class="col-3">
+      <epy-checkbox label="Hola">
+      </epy-checkbox>
+    </div>
     <h5>Types</h5>
     <div class="col-2">
       <epy-button type="btn-primary">primary</epy-button>
@@ -528,21 +536,55 @@
 
     </div>
 
+    <epy-checkbox label="option"></epy-checkbox>
+    <epy-checkbox label="option2" checked></epy-checkbox>
+
+    <h3>First group</h3>
+    <div class="epy-row">
+      <div class="col-3">
+        <epy-radio name="first" label="option 1" value="1"  ></epy-radio>
+        <epy-radio name="first" label="option 2" value="2"></epy-radio>
+        <epy-radio name="first" label="option 3" value="3" checked></epy-radio>
+        <epy-radio name="first-t" label="option 4" value="4" checked disabled></epy-radio>
+        <epy-radio name="first" label="option 5" value="5" disabled></epy-radio>
+      </div>
+    </div>
+  
+
+    <h3>Second group</h3>
+    <div class="epy-row">
+      <div class="col-3">
+        <epy-radio name="second" label="option 1" value="1"></epy-radio>
+      </div>
+      <div class="col-3">
+        <epy-radio name="second" label="option 2" value="2"></epy-radio>
+      </div>
+      <div class="col-3">
+ 
+        <epy-radio name="second" label="option 3" value="3"></epy-radio>
+      </div>
+      <div class="col-3">
+        <epy-radio name="second" label="option 4" value="4" disabled></epy-radio>
+      </div>
+    </div>
+    
   <script>
     // Multiple Checkboxes
     const pwcCheckboxes = document.querySelectorAll("epy-checkbox");
     pwcCheckboxes.forEach(element => {
       element.addEventListener("checkedEvent", event => {
-        console.log("Event: ", event.detail);
+        // console.log("Event: ", event.detail);
+      });
+    });
+
+    // Radio buttons 
+    const pwcRadio = document.querySelectorAll("epy-radio");
+    pwcRadio.forEach(element => {
+      element.addEventListener("valueChange", event => {
+        console.log("Event js: ", event.detail);
       });
     });
   </script>
-
-    <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi exercitationem, laboriosam consequatur esse nesciunt aut sed atque deserunt, iste vitae recusandae rem repudiandae quia culpa accusamus animi nihil blanditiis ullam?</h1>
-    <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi exercitationem, laboriosam consequatur esse nesciunt aut sed atque deserunt, iste vitae recusandae rem repudiandae quia culpa accusamus animi nihil blanditiis ullam?</h1>
-    <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi exercitationem, laboriosam consequatur esse nesciunt aut sed atque deserunt, iste vitae recusandae rem repudiandae quia culpa accusamus animi nihil blanditiis ullam?</h1>
-    <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi exercitationem, laboriosam consequatur esse nesciunt aut sed atque deserunt, iste vitae recusandae rem repudiandae quia culpa accusamus animi nihil blanditiis ullam?</h1>
-    <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi exercitationem, laboriosam consequatur esse nesciunt aut sed atque deserunt, iste vitae recusandae rem repudiandae quia culpa accusamus animi nihil blanditiis ullam?</h1>
   </div>
 
 </body>
