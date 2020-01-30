@@ -222,7 +222,7 @@ declare namespace LocalJSX {
     'disabled'?: boolean;
     'label'?: string;
     'name'?: string;
-    'onValueChanges'?: (event: CustomEvent<any>) => void;
+    'onValueChange'?: (event: CustomEvent<any>) => void;
     'value'?: any;
   }
   interface EpySelect {

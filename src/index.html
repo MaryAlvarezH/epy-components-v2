@@ -13,7 +13,7 @@
     />
     <link
       rel="stylesheet"
-      href="https://storage.googleapis.com/assets-front/css/epy-0-0-13.min.css"
+      href="https://storage.googleapis.com/assets-front/css/epy-0-0-14.min.css"
     />
 
     <script type="module" src="/build/epy-components.esm.js"></script>
@@ -544,8 +544,8 @@
       <div class="col-3">
         <epy-radio name="first" label="option 1" value="1"  ></epy-radio>
         <epy-radio name="first" label="option 2" value="2"></epy-radio>
-        <epy-radio name="first" label="option 3" value="3"></epy-radio>
-        <epy-radio name="first" label="option 4" value="4" checked></epy-radio>
+        <epy-radio name="first" label="option 3" value="3" checked></epy-radio>
+        <epy-radio name="first-t" label="option 4" value="4" checked disabled></epy-radio>
         <epy-radio name="first" label="option 5" value="5" disabled></epy-radio>
       </div>
     </div>
@@ -580,7 +580,7 @@
     // Radio buttons 
     const pwcRadio = document.querySelectorAll("epy-radio");
     pwcRadio.forEach(element => {
-      element.addEventListener("valueChanges", event => {
+      element.addEventListener("valueChange", event => {
         console.log("Event js: ", event.detail);
       });
     });

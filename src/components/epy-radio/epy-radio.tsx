@@ -13,12 +13,28 @@ export class Radio {
   @Prop() label: string;
   @Prop({ mutable: true, reflect: true }) checked: boolean = false;
 
-  @Event() valueChanges: EventEmitter;
+  @Event() valueChange: EventEmitter;
   radioInput: HTMLInputElement;
 
   handleValueChange(value) {
-    this.valueChanges.emit(value);
-    console.log("check radio", value);
+    if (!this.disabled) {
+      console.log("check radio prop");
+      console.log(this.value);
+      let auxValue: any;
+      if (typeof this.value === "object") {
+        if (this.value.detail && this.value.detail.detail) {
+          auxValue = this.value.detail.detail;
+        } else if (this.value.detail) {
+          auxValue = this.value.detail;
+        }
+      } else {
+        auxValue = this.value;
+      }
+
+      console.log("check radio value", value);
+      console.log("emitting", auxValue);
+      this.valueChange.emit(auxValue);
+    }
   }
 
   render() {
