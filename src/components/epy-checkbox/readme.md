@@ -7,18 +7,20 @@
 
 ## Properties
 
-| Property    | Attribute    | Description | Type      | Default     |
-| ----------- | ------------ | ----------- | --------- | ----------- |
-| `disabled`  | `disabled`   |             | `boolean` | `undefined` |
-| `isChecked` | `is-checked` |             | `boolean` | `false`     |
-| `label`     | `label`      |             | `string`  | `""`        |
+| Property   | Attribute  | Description | Type      | Default     |
+| ---------- | ---------- | ----------- | --------- | ----------- |
+| `checked`  | `checked`  |             | `boolean` | `false`     |
+| `disabled` | `disabled` |             | `boolean` | `undefined` |
+| `label`    | `label`    |             | `string`  | `undefined` |
+| `name`     | `name`     |             | `string`  | `undefined` |
+| `value`    | `value`    |             | `string`  | `undefined` |
 
 
 ## Events
 
-| Event          | Description | Type               |
-| -------------- | ----------- | ------------------ |
-| `checkedEvent` |             | `CustomEvent<any>` |
+| Event         | Description | Type               |
+| ------------- | ----------- | ------------------ |
+| `valueChange` |             | `CustomEvent<any>` |
 
 
 ----------------------------------------------

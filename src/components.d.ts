@@ -20,9 +20,11 @@ export namespace Components {
     'type': string;
   }
   interface EpyCheckbox {
+    'checked': boolean;
     'disabled': boolean;
-    'isChecked': boolean;
     'label': string;
+    'name': string;
+    'value': string;
   }
   interface EpyDroptip {
     'contentBgColor': string;
@@ -178,10 +180,12 @@ declare namespace LocalJSX {
     'type'?: string;
   }
   interface EpyCheckbox {
+    'checked'?: boolean;
     'disabled'?: boolean;
-    'isChecked'?: boolean;
     'label'?: string;
-    'onCheckedEvent'?: (event: CustomEvent<any>) => void;
+    'name'?: string;
+    'onValueChange'?: (event: CustomEvent<any>) => void;
+    'value'?: string;
   }
   interface EpyDroptip {
     'contentBgColor'?: string;
